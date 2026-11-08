@@ -1,0 +1,23 @@
+# Secretos
+.env
+.env.*
+!.env.example
+
+# Notas de trabajo locales
+CLAUDE.md
+notas/
+
+# Voces de referencia para clonar y autorizaciones firmadas (datos personales, no se publican)
+voces/
+
+# Python
+__pycache__/
+.venv/
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+.next/
+
+# macOS
+.DS_Store

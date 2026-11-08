@@ -1,0 +1,142 @@
+{
+  "obra": {
+    "titulo": "El Caballero Carmelo",
+    "autor": "Abraham Valdelomar",
+    "fuente": "data/el-caballero-carmelo.txt (textos.info, texto núm. 4636)",
+    "dominio_publico": "Autor fallecido en 1919; dominio público en el Perú desde 1990."
+  },
+  "escena": {
+    "capitulo": "V",
+    "inicio": "Pero el juez, atento a todos los detalles de la lucha…",
+    "fin": "…con una estocada que lo dejó muerto en el sitio.",
+    "resumen": "El Carmelo ha caído y los partidarios del Ajiseco ya celebran, pero el juez declara que la pelea sigue. El viejo gallo se levanta y mata a su rival de una estocada."
+  },
+  "tono_general": "Clímax del cuento. Empieza en suspenso y sube hasta la estocada final. El narrador lo recuerda de adulto, con orgullo.",
+  "personajes": [
+    {
+      "id": "narrador",
+      "nombre": "Narrador",
+      "descripcion": "El autor adulto que recuerda su niñez. De niño vio la pelea junto a su padre.",
+      "voz": "narrador-1",
+      "estilo_base": "voz cálida, épica sin exagerar"
+    },
+    {
+      "id": "juez",
+      "nombre": "El juez",
+      "descripcion": "Hombre adulto que arbitra la jugada de gallos según las reglas. Habla para toda la cancha.",
+      "voz": "narrador-2",
+      "estilo_base": "hombre mayor, firme, autoritario, voz alta y clara"
+    }
+  ],
+  "reparto": {
+    "narrador-1": {
+      "tipo": "voz clonada",
+      "consentimiento": "Voz propia de la autora del proyecto.",
+      "personajes": [
+        "narrador"
+      ],
+      "motor": "qwen3-tts"
+    },
+    "narrador-2": {
+      "tipo": "voz clonada",
+      "consentimiento": "Autorización escrita del narrador, firmada el 7 de noviembre de 2026 (se guarda fuera del repositorio).",
+      "personajes": [
+        "juez"
+      ],
+      "motor": "voxcpm2"
+    }
+  },
+  "segmentos": [
+    {
+      "n": 1,
+      "personaje": "narrador",
+      "texto": "Pero el juez, atento a todos los detalles de la lucha y con acuerdo de cánones, dijo:",
+      "texto_tts": "Pero el juez, atento a todos los detalles de la lucha y con acuerdo de cánones, dijo:",
+      "estilo": "suspenso, tensión contenida",
+      "estilo_tts": "suspenseful storyteller, hushed voice, building tension",
+      "pausa_despues_ms": 400
+    },
+    {
+      "n": 2,
+      "personaje": "juez",
+      "texto": "–¡Todavía no ha enterrado el pico, señores!",
+      "texto_tts": "¡Todavía no ha enterrado el pico, señores!",
+      "estilo": "hombre mayor, firme, autoritario, se dirige a toda la cancha",
+      "estilo_tts": "older man, firm and authoritative referee, shouting loudly to the whole arena, strong emphasis",
+      "pausa_despues_ms": 900
+    },
+    {
+      "n": 3,
+      "personaje": "narrador",
+      "texto": "En efecto, incorporóse el Carmelo.",
+      "texto_tts": "En efecto, incorporóse el Carmelo.",
+      "estilo": "asombro, renace la esperanza",
+      "estilo_tts": "astonished storyteller, hope rising in the voice",
+      "pausa_despues_ms": 600
+    },
+    {
+      "n": 4,
+      "personaje": "narrador",
+      "texto": "Su enemigo, como para humillarlo, se acercó a él, sin hacerle daño.",
+      "texto_tts": "Su enemigo, como para humillarlo, se acercó a él, sin hacerle daño.",
+      "estilo": "lento, con desdén hacia el rival",
+      "estilo_tts": "slow and scornful storyteller",
+      "pausa_despues_ms": 400
+    },
+    {
+      "n": 5,
+      "personaje": "narrador",
+      "texto": "Nació entonces, en medio del dolor de la caída, todo el coraje de los gallos de Caucato.",
+      "texto_tts": "Nació entonces, en medio del dolor de la caída, todo el coraje de los gallos de Caucato.",
+      "estilo": "crece, épico, con orgullo",
+      "estilo_tts": "epic and proud storyteller, voice rising with emotion",
+      "pausa_despues_ms": 500
+    },
+    {
+      "n": 6,
+      "personaje": "narrador",
+      "texto": "Incorporado el Carmelo, como un soldado herido, acometió de frente y definitivo sobre su rival, con una estocada que lo dejó muerto en el sitio.",
+      "texto_tts": "Incorporado el Carmelo, como un soldado herido, acometió de frente y definitivo sobre su rival, con una estocada que lo dejó muerto en el sitio.",
+      "estilo": "rápido e intenso; el clímax de la escena",
+      "estilo_tts": "fast, intense and dramatic storyteller, the climax of the fight",
+      "pausa_despues_ms": 900
+    }
+  ],
+  "pronunciacion": [
+    {
+      "palabra": "incorporóse",
+      "como_se_dice": "in-cor-po-RÓ-se",
+      "nota": "Pronombre pegado al verbo (forma antigua). El acento va en la segunda «o»."
+    },
+    {
+      "palabra": "Ajiseco",
+      "como_se_dice": "a-ji-SE-co",
+      "nota": "Nombre del gallo rival (de «ají seco»). Va en cursiva en el original; es nombre propio."
+    },
+    {
+      "palabra": "Caucato",
+      "como_se_dice": "cau-CA-to",
+      "nota": "Valle y hacienda de Pisco. Nombre propio peruano que el modelo puede no conocer."
+    },
+    {
+      "palabra": "cánones",
+      "como_se_dice": "CÁ-no-nes",
+      "nota": "Esdrújula: las reglas de la pelea."
+    },
+    {
+      "palabra": "Carmelo",
+      "como_se_dice": "car-ME-lo",
+      "nota": "Las cursivas del original no afectan la lectura."
+    }
+  ],
+  "erratas": [],
+  "avisos": {
+    "etiqueta_audio": "Voz generada con IA",
+    "nota": "Voces clonadas con consentimiento: narrador 1 (narradora) y narrador 2 (juez)."
+  },
+  "control_calidad": {
+    "metodo": "Whisper large-v3-turbo transcribe cada segmento y se compara con texto_tts.",
+    "max_wer": 0.25,
+    "reintentos": 1
+  }
+}
