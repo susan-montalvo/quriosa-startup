@@ -1,7 +1,7 @@
 """Análisis de los audiolibros registrados con ISBN en el Perú (2015-2025).
 
 Fuente: data/audiolibros_isbn_peru_2015_2025.csv, catálogo ISBN de la Biblioteca
-Nacional del Perú (BNP). Responde las preguntas de docs/mercado/01-mercado-peruano.md.
+Nacional del Perú (BNP). Los hallazgos principales están en docs/mercado/04-panorama-mercado-audiolibros.md.
 
 Uso: python3 notebooks/01_mercado_peruano.py
 """

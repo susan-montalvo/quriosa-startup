@@ -1,10 +1,10 @@
 # Mercado 4 · Panorama del mercado de audiolibros
 
-Resumen de las ideas principales de las fichas de mercado. Cada sección indica de qué ficha sale.
+Resumen de las ideas principales del análisis de mercado. Cada sección indica su fuente.
 
 ## Perú
 
-_Fuente: [01-mercado-peruano.md](01-mercado-peruano.md), con 447 audiolibros registrados con ISBN en la Biblioteca Nacional del Perú entre 2015 y 2025._
+_Fuente: 447 audiolibros registrados con ISBN en la Biblioteca Nacional del Perú entre 2015 y 2025 ([datos](../../data/audiolibros_isbn_peru_2015_2025.csv) y [análisis](../../notebooks/01_mercado_peruano.py))._
 
 ### Principales productores
 
@@ -14,13 +14,9 @@ _Fuente: [01-mercado-peruano.md](01-mercado-peruano.md), con 447 audiolibros reg
 
 > **El audiolibro peruano es, sobre todo, literatura para niños y jóvenes.** El 57 % está dirigido al público infantil y juvenil, impulsado por las colecciones de Santillana y, desde 2024, por los cuentos y poemas del Ministerio de Cultura. Le sigue la literatura peruana para adultos, en manos de Planeta y Penguin Random House, junto con algunos títulos de autoayuda, negocios, historia y política. Los clásicos de dominio público, como Vallejo, Valdelomar, Palma y Alegría, aparecen con frecuencia. El 97 % está en español; en lenguas originarias hay un solo título, en quechua.
 
-## Países de habla hispana
-
-_Se completará con las ideas principales de [02-hispanohablante.md](02-hispanohablante.md)._
-
 ## Circulación y distribución
 
-_Fuente: [03-distribucion.md](03-distribucion.md), con el informe anual de Bookwire sobre el mercado digital en español (datos de 2025, publicado en mayo de 2026)._
+_Fuente: [informe anual de Bookwire sobre el mercado digital en español](https://www.bookwire.com/fileadmin/media/landingpages/spanish_market_report/EN/Annual_Report_2025_engl_korr_06_05.pdf) (datos de 2025, publicado en mayo de 2026)._
 
 ### Canales principales
 
