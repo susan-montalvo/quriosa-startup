@@ -1,0 +1,36 @@
+{
+  "narrador-1": {
+    "titulo": "Narrador 1 · voz femenina peruana",
+    "autorizacion": "De la titular de la voz",
+    "obra": "El caballero Carmelo, de Abraham Valdelomar",
+    "personaje": "Narradora",
+    "donde": "Presentación del curso, demo web y repositorio en GitHub",
+    "uso_comercial": "No",
+    "pago": "Sin pago (demo)",
+    "retiro": "Puede retirarla en cualquier momento",
+    "referencia": "Su grabación original no se publica",
+    "motor": "Qwen3-TTS 0.6B Base",
+    "usos": [
+      {"segmento": 1, "fecha": "2026-11-08", "segundos": 6.8},
+      {"segmento": 3, "fecha": "2026-11-08", "segundos": 3.0},
+      {"segmento": 4, "fecha": "2026-11-08", "segundos": 5.0},
+      {"segmento": 5, "fecha": "2026-11-08", "segundos": 7.1},
+      {"segmento": 6, "fecha": "2026-11-08", "segundos": 9.6}
+    ]
+  },
+  "narrador-2": {
+    "titulo": "Narrador 2 · voz masculina peruana",
+    "autorizacion": "Escrita y firmada el 7 de noviembre de 2026",
+    "obra": "El caballero Carmelo, de Abraham Valdelomar",
+    "personaje": "Juez (ningún otro texto, personaje ni proyecto sin un nuevo permiso escrito)",
+    "donde": "Presentación del curso (11 nov 2026), demo web y repositorio en GitHub",
+    "uso_comercial": "No, ni publicidad",
+    "pago": "Gratuita (demo)",
+    "retiro": "Puede retirarla en cualquier momento; en 7 días se borran su voz y los audios generados",
+    "referencia": "Su grabación original y la copia digital de su voz no se publican",
+    "motor": "VoxCPM2",
+    "usos": [
+      {"segmento": 2, "fecha": "2026-11-08", "segundos": 2.2}
+    ]
+  }
+}

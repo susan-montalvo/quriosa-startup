@@ -245,6 +245,23 @@ st.dataframe(qc[["n", "personaje", "texto_tts", "oido", "wer", "resultado"]].ren
     columns={"texto_tts": "texto esperado", "oido": "lo que oyó Whisper", "wer": "WER"}),
     hide_index=True, width="stretch")
 
+# 6. Licencias de voz
+st.header("6. Licencias de voz")
+st.write("Cada narrador controla su voz clonada: para qué obra y personaje se usa, dónde se publica, "
+         "cada audio que se generó con ella y cómo retirarla.")
+licencias = json.loads((DEMO / "licencias.json").read_text(encoding="utf-8"))
+for col, lic in zip(st.columns(len(licencias)), licencias.values()):
+    with col.container(border=True):
+        st.subheader(lic["titulo"])
+        st.markdown("\n".join(f"- **{campo}:** {lic[clave_]}" for campo, clave_ in [
+            ("Autorización", "autorizacion"), ("Obra", "obra"), ("Personaje", "personaje"),
+            ("Dónde se usa", "donde"), ("Uso comercial", "uso_comercial"), ("Pago", "pago"),
+            ("Retiro", "retiro"), ("Grabación de referencia", "referencia"), ("Modelo", "motor")]))
+        usos = pd.DataFrame(lic["usos"])
+        st.markdown(f"**Registro de usos:** {len(usos)} segmentos · {usos['segundos'].sum():.1f} s de audio "
+                    "· todos con el aviso «Voz generada con IA»")
+        st.dataframe(usos, hide_index=True, width="stretch")
+
 st.divider()
 st.caption("Quriosa · proyecto final de la Diplomatura de Ciencia de Datos de Q-Lab PUCP · "
            "[código](https://github.com/susan-montalvo/quriosa-startup)")
