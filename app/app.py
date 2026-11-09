@@ -241,7 +241,7 @@ st.write("Whisper (large-v3-turbo) transcribe cada segmento y lo compara con el 
          "de palabras (WER) supera el umbral, el segmento se vuelve a generar.")
 qc = pd.DataFrame(calidad)
 qc["resultado"] = qc["wer"].map(lambda w: "✅ aprobado" if w <= 0.1 else "⚠️ revisar")
-st.dataframe(qc[["n", "personaje", "texto_tts", "oido", "wer", "resultado"]].rename(
+st.dataframe(qc[["n", "personaje", "wer", "resultado", "texto_tts", "oido"]].rename(
     columns={"texto_tts": "texto esperado", "oido": "lo que oyó Whisper", "wer": "WER"}),
     hide_index=True, width="stretch")
 
