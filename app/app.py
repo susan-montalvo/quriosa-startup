@@ -25,7 +25,10 @@ DEMO = Path(__file__).resolve().parent / "demo"
 ASSETS = Path(__file__).resolve().parent / "assets"
 PLAN_DEMO = RAIZ / "data" / "plan-narracion-carmelo-cap5.json"
 PROMPT = RAIZ / "ai" / "plan_narracion.md"
-MODELOS = ["gemini-3.5-flash", "gemini-3.8-flash", "gemini-flash-latest"]
+# En orden de preferencia; si uno está saturado (503) o tarda, se pasa al siguiente.
+MODELOS = ["gemini-3.5-flash", "gemini-3.6-flash", "gemini-3-flash-preview",
+           "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
+ESPERA_MAXIMA = 60  # segundos en total; después se muestra el plan pregenerado
 VOCES = {
     "narrador-1": "Narrador 1 · voz femenina peruana (clonada con permiso)",
     "narrador-2": "Narrador 2 · voz masculina peruana (clonada con autorización escrita)",
@@ -105,13 +108,18 @@ def armar_plan(texto, obra, autor):
         "generationConfig": {"responseMimeType": "application/json", "responseSchema": ESQUEMA, "temperature": 0.2},
     }
     errores = []
+    limite = time.time() + ESPERA_MAXIMA
     for modelo in MODELOS:
+        queda = limite - time.time()
+        if queda < 5:
+            errores.append("se agotó el tiempo de espera")
+            break
         pedido = urllib.request.Request(
             f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent",
             data=json.dumps(cuerpo).encode(), headers={"x-goog-api-key": clave(), "Content-Type": "application/json"})
         t = time.time()
         try:
-            respuesta = json.load(urllib.request.urlopen(pedido, timeout=60))
+            respuesta = json.load(urllib.request.urlopen(pedido, timeout=min(30, queda)))
             partes = respuesta["candidates"][0]["content"]["parts"]
             plan = json.loads(next(p["text"] for p in reversed(partes) if "text" in p))
             return plan, modelo, time.time() - t
