@@ -1,0 +1,45 @@
+[
+  {
+    "n": 1,
+    "personaje": "narrador",
+    "texto_tts": "Pero el juez, atento a todos los detalles de la lucha y con acuerdo de cánones, dijo:",
+    "oido": "Pero el juez, atento a todos los detalles de la lucha y con acuerdo de cánones, dijo",
+    "wer": 0.0
+  },
+  {
+    "n": 2,
+    "personaje": "juez",
+    "texto_tts": "¡Todavía no ha enterrado el pico, señores!",
+    "oido": "Todavía no ha enterrado el pico, señores.",
+    "wer": 0.0,
+    "variante": "VoxCPM2 con estilo (older man, firm and authoritative referee, shouting loudly...), remuestreado de 48 a 24 kHz"
+  },
+  {
+    "n": 3,
+    "personaje": "narrador",
+    "texto_tts": "En efecto, incorporóse el Carmelo.",
+    "oido": "En efecto, incorporose el carmelo.",
+    "wer": 0.0
+  },
+  {
+    "n": 4,
+    "personaje": "narrador",
+    "texto_tts": "Su enemigo, como para humillarlo, se acercó a él, sin hacerle daño.",
+    "oido": "Su enemigo, como para humillarlo, se acercó a él sin hacerle daño.",
+    "wer": 0.0
+  },
+  {
+    "n": 5,
+    "personaje": "narrador",
+    "texto_tts": "Nació entonces, en medio del dolor de la caída, todo el coraje de los gallos de Caucato.",
+    "oido": "Nació entonces en medio del dolor de la caída todo el coraje de los gallos de caucato.",
+    "wer": 0.0
+  },
+  {
+    "n": 6,
+    "personaje": "narrador",
+    "texto_tts": "Incorporado el Carmelo, como un soldado herido, acometió de frente y definitivo sobre su rival, con una estocada que lo dejó muerto en el sitio.",
+    "oido": "incorporado el carmelo como un soldado herido acometió de frente y definitivo sobre su rival con una estocada que lo dejó muerto en el sitio",
+    "wer": 0.0
+  }
+]
