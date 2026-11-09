@@ -1,9 +1,9 @@
-# Conversación 2 · Docente o gestor educativo
+# Conversación 2 · Gestor educativo
 
-- **Fecha:**
-- **Quién:** Docente o gestor educativo en el Perú (por ejemplo, «docente de comunicación de primaria en un colegio privado de Lima», «coordinadora del plan lector de un colegio», «director de una institución educativa» o «especialista de una UGEL»). Sin nombre si no dio su consentimiento.
-- **Medio:** por escrito (correo o WhatsApp), en persona o llamada.
-- **Duración:**
+- **Fecha:** 8 de noviembre de 2026
+- **Quién:** Especialista en gestión curricular. Más de 15 años de experiencia en sector educativo. Sin nombre.
+- **Medio:** WhatsApp, por escrito.
+- **Duración:** no aplica.
 
 ## Preguntas
 

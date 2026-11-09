@@ -1,32 +1,35 @@
 # Conversación 1 · Editorial escolar
 
-- **Fecha:**
-- **Quién:** Persona que edita colecciones infantiles o de lectura escolar en una editorial peruana (por ejemplo, «editora de literatura infantil, 8 años en una editorial escolar»). Sin nombre si no dio su consentimiento.
-- **Medio:** por escrito (correo o WhatsApp), en persona o llamada.
-- **Duración:**
+- **Fecha:** 7 de noviembre de 2026
+- **Quién:** Editor de literatura infantil y juvenil, más de 10 años de experiencia en el sector editorial. Sin nombre.
+- **Medio:** WhatsApp, 3 notas de voz, una por pregunta.
+- **Duración:** 1 min 41 s (19 s, 44 s y 38 s).
 
 ## Preguntas
 
-Sobre lo que ya hizo, no sobre lo que haría (YC, «How to Talk to Users»).
+1. Su editorial tiene audiolibros producidos o proyectos de audiolibros en curso?
 
-1. Cuéntame cómo produjeron el último audiolibro de su catálogo, paso a paso, desde que eligieron el libro hasta que se publicó.
-2. Antes de grabar, ¿quién preparó el texto (diálogos, personajes, pronunciación) y quién eligió al narrador? ¿Cuánto tiempo tomó?
-3. ¿Cuánto costó producirlo (narrador, estudio, edición) y cuánto tardó en total?
-4. ¿Qué libros de su catálogo no tienen versión en audio? ¿Por qué no?
-5. ¿Han probado voces sintéticas o con IA? ¿Qué pasó?
-6. ¿Cómo llegan sus audiolibros a los colegios y a los alumnos?
+2. Qué softwares usa para producir sus audiolibros? Si aún no usa, ¿qué tipo de softwares son los que  usted contrataría?
+   - automatizacion de la narración y entrega de producto
+   - gestión de la distribución
+   - analítica de venta e impacto de sus audiolibros
 
-## Notas
+3. Si tuviera al alcance el primer software (automatización de narración), que prefería?
+   - narración grabada por personas al 100%
+   - narración con voz generada por AI, a partir de demos que le brinde el software (con voces de narradores que autorizaron su uso).
 
-_Por completar._
+## Respuestas
 
-## Citas textuales
+Respondió con notas de voz. Transcritas con Whisper large-v3-turbo; el nombre de la editorial se reemplazó por [la editorial].
 
-_Por completar._
+1. No, [la editorial] no tiene audiolibros y tampoco nos encontramos en proceso. En realidad no está dentro de nuestra mirada en el corto plazo.
+
+2. En cuanto al software, yo lo miraría de una forma más transversal, porque de todas maneras, teniendo el material, no me serviría si es que no tengo también un acompañamiento en la gestión de la distribución. Y que incluso venga con la analítica, pues para mí me serviría más eso, a que solamente tenga que ver la automatización de la narración.
+
+3. Yo elegiría la narración grabada por personas al 100%. Al menos por el momento, estamos considerando todo el trabajo creativo 100% humano. Ese es el factor, además que estamos manejando en cuanto a nuestras diversas decisiones. Estamos usando inteligencia artificial, pero de una forma más mecánica, no necesariamente en productos creativos.
 
 ## Qué aprendí
 
-- **Problema confirmado o descartado:**
-- **Cuánto le cuesta hoy (horas, soles):**
-- **Cómo lo resuelve hoy:**
-- **¿Pagaría o usaría Quriosa? ¿Cuánto?:**
+- **¿Siente el problema?** No por ahora. Su editorial no tiene audiolibros ni piensa producirlos a corto plazo.
+- **Objeciones:** prefiere la narración 100 % humana: usa inteligencia artificial en tareas mecánicas, no en el trabajo creativo. Y la narración sola no le basta.
+- **Qué cambia para Quriosa:** la editorial valora más un servicio completo, que incluya la distribución y la analítica de ventas e impacto, que solo automatizar la narración. Además, la voz con IA encuentra resistencia en el trabajo creativo: conviene presentarla como voces de narradores reales que autorizaron su uso y cobran por ella, y dejar la narración humana como opción.
