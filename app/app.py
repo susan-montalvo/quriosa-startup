@@ -29,6 +29,12 @@ PROMPT = RAIZ / "ai" / "plan_narracion.md"
 MODELOS = ["gemini-3.5-flash", "gemini-3.6-flash", "gemini-3-flash-preview",
            "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
 ESPERA_MAXIMA = 60  # segundos en total; después se muestra el plan pregenerado
+PALABRAS_POR_MINUTO = 131  # medido en el audio del demo (83 palabras en 37.9 s)
+PRECIOS = [  # soles por hora de audio terminado (README, «Modelo de negocio»)
+    ("Voz clonada", 800, 800),
+    ("Híbrido: voz humana en las escenas clave", 1200, 1200),
+    ("Estudio, voz 100 % humana", 1400, 1900),
+]
 VOCES = {
     "narrador-1": "Narrador 1 · voz femenina peruana (clonada con permiso)",
     "narrador-2": "Narrador 2 · voz masculina peruana (clonada con autorización escrita)",
@@ -87,8 +93,10 @@ ESQUEMA = {
             "required": ["id", "nombre", "descripcion", "estilo_base"]}},
         "segmentos": {"type": "ARRAY", "items": {"type": "OBJECT", "properties": {
             "n": {"type": "INTEGER"}, "personaje": TEXTO, "texto": TEXTO, "texto_tts": TEXTO,
-            "estilo": TEXTO, "estilo_tts": TEXTO, "pausa_despues_ms": {"type": "INTEGER"}},
-            "required": ["n", "personaje", "texto", "texto_tts", "estilo", "estilo_tts", "pausa_despues_ms"]}},
+            "estilo": TEXTO, "estilo_tts": TEXTO, "pausa_despues_ms": {"type": "INTEGER"},
+            "clave": {"type": "BOOLEAN"}, "motivo_clave": TEXTO},
+            "required": ["n", "personaje", "texto", "texto_tts", "estilo", "estilo_tts", "pausa_despues_ms",
+                         "clave", "motivo_clave"]}},
         "pronunciacion": {"type": "ARRAY", "items": {"type": "OBJECT", "properties": {
             "palabra": TEXTO, "como_se_dice": TEXTO, "nota": TEXTO},
             "required": ["palabra", "como_se_dice", "nota"]}},
@@ -185,7 +193,8 @@ if "plan" in st.session_state:
 
     st.subheader("Segmentos")
     tabla = pd.DataFrame(plan["segmentos"])
-    columnas = [c for c in ["n", "personaje", "texto", "estilo", "pausa_despues_ms"] if c in tabla]
+    tabla["voz (híbrido)"] = ["🎙️ humana" if s.get("clave") else "clonada" for s in plan["segmentos"]]
+    columnas = [c for c in ["n", "personaje", "voz (híbrido)", "texto", "estilo", "pausa_despues_ms"] if c in tabla]
     st.dataframe(tabla[columnas].rename(columns={"pausa_despues_ms": "pausa (ms)"}),
                  hide_index=True, width="stretch")
 
@@ -217,12 +226,36 @@ if "plan" in st.session_state:
         voz = sugerido.get(p["id"]) or ("narrador-2" if p["id"] not in ("narrador", "narradora") and i else "narrador-1")
         st.selectbox(f"{p['nombre']} ({p['id']})", list(VOCES), index=list(VOCES).index(voz),
                      format_func=VOCES.get, key=f"voz-{p['id']}")
+
+    st.subheader("Plan híbrido: escenas clave con voz humana")
+    palabras = lambda segs: sum(len(s["texto"].split()) for s in segs)
+    claves = [s for s in plan["segmentos"] if s.get("clave")]
+    total = palabras(plan["segmentos"])
+    st.write(f"Gemini marcó **{len(claves)} de {len(plan['segmentos'])} segmentos** "
+             f"({palabras(claves) / total:.0%} de las palabras) para que el locutor los grabe en estudio. "
+             "El resto lo narra su voz clonada: el oyente escucha una sola voz.")
+    if claves:
+        st.dataframe(pd.DataFrame(claves)[["n", "personaje", "texto", "motivo_clave"]].rename(
+            columns={"motivo_clave": "por qué es clave"}), hide_index=True, width="stretch")
+
+    horas = total / PALABRAS_POR_MINUTO / 60
+    st.subheader("Cuánto costaría")
+    st.write(f"Este texto dura unos **{horas * 60:.1f} minutos** de audio ({total} palabras a "
+             f"{PALABRAS_POR_MINUTO} palabras por minuto).")
+    soles = lambda bajo, alto: f"S/ {bajo:.0f}" if bajo == alto else f"S/ {bajo:.0f} a {alto:.0f}"
+    st.dataframe(pd.DataFrame([{"plan": nombre, "por hora de audio": soles(bajo, alto),
+                                "este texto": soles(bajo * horas, alto * horas)}
+                               for nombre, bajo, alto in PRECIOS]), hide_index=True, width="stretch")
+    st.caption("Estudio: tarifa de un estudio de audio de Lima más la del locutor (conversación 3). "
+               "El primer título de hasta 30 minutos, como piloto, cuesta S/ 300.")
 else:
     st.info("Presiona **Armar plan con IA** para ver el plan de narración.")
 
 # 4. Narración
 st.header("4. Narración")
 st.markdown("🔊 **Voz generada con IA.** Narradora: *narrador 1*. Juez: *narrador 2*.")
+st.caption("En el demo, todos los segmentos están clonados. En el plan híbrido, los segmentos clave "
+           "se grabarían en estudio con la voz real del mismo locutor.")
 if not es_demo:
     st.info("Generar la voz de un texto nuevo toma varios minutos en el servidor de voz "
             "(Qwen3-TTS y VoxCPM2). Aquí se escucha la escena de ejemplo.")

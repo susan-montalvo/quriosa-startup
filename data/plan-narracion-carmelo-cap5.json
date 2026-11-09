@@ -54,7 +54,9 @@
       "texto_tts": "Pero el juez, atento a todos los detalles de la lucha y con acuerdo de cánones, dijo:",
       "estilo": "suspenso, tensión contenida",
       "estilo_tts": "suspenseful storyteller, hushed voice, building tension",
-      "pausa_despues_ms": 400
+      "pausa_despues_ms": 400,
+      "clave": false,
+      "motivo_clave": ""
     },
     {
       "n": 2,
@@ -63,7 +65,9 @@
       "texto_tts": "¡Todavía no ha enterrado el pico, señores!",
       "estilo": "hombre mayor, firme, autoritario, se dirige a toda la cancha",
       "estilo_tts": "older man, firm and authoritative referee, shouting loudly to the whole arena, strong emphasis",
-      "pausa_despues_ms": 900
+      "pausa_despues_ms": 900,
+      "clave": false,
+      "motivo_clave": ""
     },
     {
       "n": 3,
@@ -72,7 +76,9 @@
       "texto_tts": "En efecto, incorporóse el Carmelo.",
       "estilo": "asombro, renace la esperanza",
       "estilo_tts": "astonished storyteller, hope rising in the voice",
-      "pausa_despues_ms": 600
+      "pausa_despues_ms": 600,
+      "clave": false,
+      "motivo_clave": ""
     },
     {
       "n": 4,
@@ -81,7 +87,9 @@
       "texto_tts": "Su enemigo, como para humillarlo, se acercó a él, sin hacerle daño.",
       "estilo": "lento, con desdén hacia el rival",
       "estilo_tts": "slow and scornful storyteller",
-      "pausa_despues_ms": 400
+      "pausa_despues_ms": 400,
+      "clave": false,
+      "motivo_clave": ""
     },
     {
       "n": 5,
@@ -90,7 +98,9 @@
       "texto_tts": "Nació entonces, en medio del dolor de la caída, todo el coraje de los gallos de Caucato.",
       "estilo": "crece, épico, con orgullo",
       "estilo_tts": "epic and proud storyteller, voice rising with emotion",
-      "pausa_despues_ms": 500
+      "pausa_despues_ms": 500,
+      "clave": false,
+      "motivo_clave": ""
     },
     {
       "n": 6,
@@ -99,7 +109,9 @@
       "texto_tts": "Incorporado el Carmelo, como un soldado herido, acometió de frente y definitivo sobre su rival, con una estocada que lo dejó muerto en el sitio.",
       "estilo": "rápido e intenso; el clímax de la escena",
       "estilo_tts": "fast, intense and dramatic storyteller, the climax of the fight",
-      "pausa_despues_ms": 900
+      "pausa_despues_ms": 900,
+      "clave": true,
+      "motivo_clave": "Clímax del combate y estocada final del protagonista."
     }
   ],
   "pronunciacion": [
