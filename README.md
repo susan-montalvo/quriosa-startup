@@ -69,7 +69,7 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 **2. Reparto y precio:** cada personaje recibe una voz clonada con permiso, y la app calcula cuánto costaría el texto con voz clonada, en estudio o con la opción híbrida.
 
-![Reparto y calculadora de precios](docs/capturas/2-reparto-plan-hibrido-y-precios.png)
+![Reparto y calculadora de precios](docs/capturas/2-reparto-y-precio.png)
 
 **3. Narración:** el audio de la escena lleva el aviso «Voz generada con IA»; todos sus segmentos están clonados. En una sección plegable, la app muestra también la opción híbrida.
 
