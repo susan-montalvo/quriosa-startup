@@ -45,8 +45,8 @@ st.set_page_config(page_title="Quriosa · audiolibros peruanos", page_icon=str(A
 
 # Datos ---------------------------------------------------------------------------
 
-@st.cache_data
 def plan_demo():
+    """Se lee en cada ejecución (es pequeño): así un cambio en el archivo se ve sin reiniciar la app."""
     return json.loads(PLAN_DEMO.read_text(encoding="utf-8"))
 
 
