@@ -71,7 +71,7 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 ![Reparto, escenas clave y calculadora de precios](docs/capturas/2-reparto-plan-hibrido-y-precios.png)
 
-**3. Narración:** el audio de la escena lleva el aviso «Voz generada con IA»; en el demo, todos los segmentos están clonados.
+**3. Narración:** el audio de la escena lleva el aviso «Voz generada con IA»; todos sus segmentos están clonados. Debajo, la app compara el clímax grabado por el narrador 1 y generado con su voz clonada.
 
 ![Audio de la escena](docs/capturas/3-narracion.png)
 
@@ -128,7 +128,7 @@ python backend/narrar.py data/plan-narracion-carmelo-cap5.json --motor qwen
 | Colección del plan lector | Hasta 12 horas al año con voz de IA (supuesto: unos 26 cuentos como *El caballero Carmelo*, 1 hora de audio al mes) | S/ 8400 al año (S/ 700 por hora, 12.5 % menos a cambio del compromiso anual) |
 | Híbrido: voz humana en las escenas clave | El locutor graba en estudio cerca del 30 % del libro (las escenas que Gemini marca como clave: inicio, clímax y diálogos principales) y su voz clonada narra el resto; el oyente escucha una sola voz | ≈ S/ 1200 por hora terminada |
 
-La narración 100 % humana en estudio se cotiza aparte. El híbrido cuesta de 13 % a 38 % menos que el estudio (≈ S/ 540 por *El caballero Carmelo*), con un margen de 17 % a 31 % para Quriosa; se vende por calidad, no por precio. Propuesta sin validar con editoriales; el cambio entre voz grabada y clonada puede notarse; queda pendiente de probar en el demo el audio que mezcla voz grabada y clonada.
+La narración 100 % humana en estudio se cotiza aparte. El híbrido cuesta de 13 % a 38 % menos que el estudio (≈ S/ 540 por *El caballero Carmelo*), con un margen de 17 % a 31 % para Quriosa; se vende por calidad, no por precio. Propuesta sin validar con editoriales; el cambio entre voz grabada y clonada puede notarse; el demo compara el clímax (segmento 6) grabado por el narrador 1 y generado con su voz clonada; queda pendiente probar un audio completo que mezcle ambas.
 
 El narrador recibe el 30 % de cada título narrado con su voz. El locutor de la conversación 3 no licenciaría su voz; sin embargo, el narrador 2 aceptó para una obra y sin uso comercial. Quriosa responde a la desconfianza del locutor con la licencia de voz: el locutor decide para qué obra y personaje se usa su voz y por cuánto tiempo, ve cada audio generado con ella y puede retirarla, como se ve en la sección 6 del demo ([captura](docs/capturas/5-licencias-de-voz.png)).
 

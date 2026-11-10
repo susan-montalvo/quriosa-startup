@@ -268,6 +268,19 @@ with st.expander("Escuchar cada segmento"):
 st.download_button("Descargar el audio (MP3)", (DEMO / "escena.mp3").read_bytes(),
                    "el-caballero-carmelo-cap5.mp3", "audio/mpeg")
 
+st.subheader("Plan híbrido: el clímax con voz grabada y con voz clonada")
+st.write("El segmento 6 es el clímax de la escena. En el plan híbrido, el locutor lo graba en estudio; "
+         "aquí se escucha la misma frase grabada por el narrador 1 y generada con su voz clonada.")
+c1, c2 = st.columns(2)
+with c1:
+    st.markdown("🎙️ **Voz humana, grabada** (narrador 1)")
+    st.audio(str(DEMO / "segmento-06-narrador-humano.mp3"))
+    st.caption("12.2 s de habla · Whisper: WER 0, sin errores")
+with c2:
+    st.markdown("🔊 **Voz generada con IA** (clon del narrador 1)")
+    st.audio(str(DEMO / "segmento-06-narrador.mp3"))
+    st.caption("8.8 s de habla · Whisper: WER 0, sin errores")
+
 # 5. Control de calidad
 st.header("5. Control de calidad")
 st.write("Whisper (large-v3-turbo) transcribe cada segmento y lo compara con el texto. Si la tasa de error "
