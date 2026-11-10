@@ -1,0 +1,3 @@
+# La app se muestra siempre en modo claro (también si el navegador o el Mac están en modo oscuro).
+[theme]
+base = "light"
