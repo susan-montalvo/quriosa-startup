@@ -71,7 +71,7 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 ![Reparto, escenas clave y calculadora de precios](docs/capturas/2-reparto-plan-hibrido-y-precios.png)
 
-**3. Narración:** el audio de la escena lleva el aviso «Voz generada con IA»; todos sus segmentos están clonados. Debajo, la app compara el clímax grabado por el narrador 1 y generado con su voz clonada.
+**3. Narración:** el audio de la escena lleva el aviso «Voz generada con IA»; todos sus segmentos están clonados. Debajo, para el plan híbrido, la app compara el clímax grabado por el narrador 1 y generado con su voz clonada, y reproduce la escena completa en versión híbrida: segmentos 1 a 5 clonados y segmento 6 grabado.
 
 ![Audio de la escena](docs/capturas/3-narracion.png)
 
@@ -83,7 +83,7 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 ![Licencias de voz y registro de usos](docs/capturas/5-licencias-de-voz.png)
 
-**Qué pasa en vivo y qué está pregenerado:** el plan de narración se arma en vivo con Gemini para cualquier texto. El audio de la escena está pregenerado, porque en CPU generar 38 segundos de audio toma de 13 a 50 minutos, según el modelo.
+**Qué pasa en vivo y qué está pregenerado:** el plan de narración se arma en vivo con Gemini para cualquier texto. El audio de la escena está pregenerado, porque en CPU generar 38 segundos de audio toma de 13 a 50 minutos, según el modelo. La versión híbrida se armó con los mismos segmentos clonados, con el ruido de fondo reducido, y el segmento 6 grabado por el narrador 1.
 
 ```mermaid
 flowchart LR
@@ -103,6 +103,7 @@ flowchart LR
 | Voz de la narradora | Qwen3-TTS 0.6B Base | Clona con 10-25 s de audio, Apache 2.0, corre en CPU. |
 | Voz del juez | VoxCPM2 | Clona y acepta un estilo por frase («árbitro firme, gritando a toda la cancha»). |
 | Control de calidad | Whisper large-v3-turbo (faster-whisper) | Transcribe en la laptop, sin enviar el audio fuera; el WER detecta palabras mal dichas. |
+| Reducción de ruido (escena híbrida) | RNNoise (filtro `arnndn` de ffmpeg, modelo std) | Acerca el fondo de los segmentos clonados al de la voz grabada; corre en la laptop, sin enviar el audio fuera. |
 
 **Cómo correrlo:**
 
@@ -128,7 +129,7 @@ python backend/narrar.py data/plan-narracion-carmelo-cap5.json --motor qwen
 | Colección del plan lector | Hasta 12 horas al año con voz de IA (supuesto: unos 26 cuentos como *El caballero Carmelo*, 1 hora de audio al mes) | S/ 8400 al año (S/ 700 por hora, 12.5 % menos a cambio del compromiso anual) |
 | Híbrido: voz humana en las escenas clave | El locutor graba en estudio cerca del 30 % del libro (las escenas que Gemini marca como clave: inicio, clímax y diálogos principales) y su voz clonada narra el resto; el oyente escucha una sola voz | ≈ S/ 1200 por hora terminada |
 
-La narración 100 % humana en estudio se cotiza aparte. El híbrido cuesta de 13 % a 38 % menos que el estudio (≈ S/ 540 por *El caballero Carmelo*), con un margen de 17 % a 31 % para Quriosa; se vende por calidad, no por precio. Propuesta sin validar con editoriales; el cambio entre voz grabada y clonada puede notarse; el demo compara el clímax (segmento 6) grabado por el narrador 1 y generado con su voz clonada; queda pendiente probar un audio completo que mezcle ambas.
+La narración 100 % humana en estudio se cotiza aparte. El híbrido cuesta de 13 % a 38 % menos que el estudio (≈ S/ 540 por *El caballero Carmelo*), con un margen de 17 % a 31 % para Quriosa; se vende por calidad, no por precio. Propuesta sin validar con editoriales; el cambio entre voz grabada y clonada puede notarse; el demo incluye la escena completa en versión híbrida (el clímax grabado por el narrador 1 y el resto con su voz clonada) y, aun con la reducción de ruido, la voz grabada suena más limpia. Para que suenen igual desde el principio, la voz de referencia del clon y las escenas clave deben grabarse en la misma sesión, con el mismo micrófono y en el mismo estudio.
 
 El narrador recibe el 30 % de cada título narrado con su voz. El locutor de la conversación 3 no licenciaría su voz; sin embargo, el narrador 2 aceptó para una obra y sin uso comercial. Quriosa responde a la desconfianza del locutor con la licencia de voz: el locutor decide para qué obra y personaje se usa su voz y por cuánto tiempo, ve cada audio generado con ella y puede retirarla, como se ve en la sección 6 del demo ([captura](docs/capturas/5-licencias-de-voz.png)).
 
@@ -170,7 +171,7 @@ Claude Code fue el socio técnico del proyecto. Susan definió el producto, el c
 
 - **Mercado:** analizó la base de ISBN de la BNP ([notebooks/01_mercado_peruano.py](notebooks/01_mercado_peruano.py)) y resumió el informe de Bookwire ([docs/mercado/](docs/mercado/)).
 - **Plan de narración:** escribió el prompt ([ai/plan_narracion.md](ai/plan_narracion.md)), el esquema JSON y el plan de la escena ([data/plan-narracion-carmelo-cap5.json](data/plan-narracion-carmelo-cap5.json)).
-- **Voz:** escribió [backend/narrar.py](backend/narrar.py) (clonación con Qwen3-TTS y VoxCPM2, control con Whisper), instaló los modelos en una Mac Intel sin GPU y generó y mezcló el audio del demo.
+- **Voz:** escribió [backend/narrar.py](backend/narrar.py) (clonación con Qwen3-TTS y VoxCPM2, control con Whisper), instaló los modelos en una Mac Intel sin GPU y generó y mezcló el audio del demo. Para el plan híbrido, comparó las tomas grabadas por el narrador 1 (WER, ruido de fondo y tono), redujo el ruido de los segmentos clonados con RNNoise y armó la escena híbrida.
 - **App:** escribió [app/app.py](app/app.py), probó qué modelos de Gemini respondían y armó el respaldo, agregó las licencias de voz, las escenas clave del plan híbrido y la calculadora de precios, vectorizó el logo y guió el despliegue en Streamlit Community Cloud.
 - **Research:** propuso plantillas de las conversaciones, que Susan editó y actualizó, y la autorización de uso de voz que firmó el narrador 2. Transcribió con Whisper las notas de voz de las conversaciones 1 y 3, quitó los nombres y resumió lo aprendido.
 - **Documentación:** este README, con los textos validados por Susan.

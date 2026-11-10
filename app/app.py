@@ -280,6 +280,11 @@ with c2:
     st.markdown("🔊 **Voz generada con IA** (clon del narrador 1)")
     st.audio(str(DEMO / "segmento-06-narrador.mp3"))
     st.caption("8.8 s de habla · Whisper: WER 0, sin errores")
+st.markdown("**Escena completa, versión híbrida.** Segmentos 1 a 5: 🔊 voz generada con IA · "
+            "segmento 6: 🎙️ voz humana grabada.")
+st.audio(str(DEMO / "escena-hibrida.mp3"))
+st.caption("41.2 s · a los segmentos clonados se les redujo el ruido de fondo (RNNoise) para acercarlos a la voz "
+           "grabada · Whisper transcribe la escena completa sin errores (WER 0).")
 
 # 5. Control de calidad
 st.header("5. Control de calidad")
