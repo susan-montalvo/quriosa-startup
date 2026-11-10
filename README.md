@@ -45,7 +45,7 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 **Qué construimos:** un flujo que convierte un texto en un audiolibro con varias voces.
 
-1. **Plan de narración.** Gemini lee el fragmento y devuelve un JSON estructurado: quién habla en cada segmento, con qué estilo y pausas, qué palabras son difíciles de pronunciar y qué posibles erratas tiene el texto. También califica de 1 a 5 la importancia de cada segmento; la app elige los más importantes, hasta cerca del 30 % del texto, para grabarlos con voz humana en el plan híbrido.
+1. **Plan de narración.** Gemini lee el fragmento y devuelve un JSON estructurado: quién habla en cada segmento, con qué estilo y pausas, qué palabras son difíciles de pronunciar y qué posibles erratas tiene el texto.
 2. **Reparto.** Cada personaje recibe una voz peruana clonada con autorización escrita del narrador.
 3. **Narración.** Qwen3-TTS y VoxCPM2 generan el audio con esas voces; VoxCPM2 acepta indicaciones de estilo por frase, útiles para los personajes.
 4. **Control de calidad.** Whisper transcribe cada segmento, mide el error (WER) y regenera los que salen mal.
@@ -63,15 +63,15 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 **URL:** https://quriosa.streamlit.app/. Escena de ejemplo: capítulo V de *El caballero Carmelo*, de Abraham Valdelomar (dominio público), con dos voces clonadas con permiso: la narradora (narrador 1) y el juez (narrador 2).
 
-**1. Plan de narración:** Gemini divide el texto en segmentos por personaje, con estilo y pausas, y califica la importancia de cada uno; la app marca los que grabaría el locutor en el plan híbrido.
+**1. Plan de narración:** Gemini divide el texto en segmentos por personaje, con estilo y pausas.
 
 ![Plan de narración armado por Gemini](docs/capturas/1-plan-de-narracion.png)
 
-**2. Reparto, plan híbrido y precio:** cada personaje recibe una voz clonada con permiso; la app muestra las escenas clave para voz humana y cuánto costaría el texto con voz clonada, con el plan híbrido y en estudio.
+**2. Reparto y precio:** cada personaje recibe una voz clonada con permiso, y la app calcula cuánto costaría el texto con voz clonada, en estudio o con la opción híbrida.
 
-![Reparto, escenas clave y calculadora de precios](docs/capturas/2-reparto-plan-hibrido-y-precios.png)
+![Reparto y calculadora de precios](docs/capturas/2-reparto-plan-hibrido-y-precios.png)
 
-**3. Narración:** el audio de la escena lleva el aviso «Voz generada con IA»; todos sus segmentos están clonados. Debajo, para el plan híbrido, la app compara el clímax grabado por el narrador 1 y generado con su voz clonada, y reproduce la escena completa en versión híbrida: segmentos 1 a 5 clonados y segmento 6 grabado.
+**3. Narración:** el audio de la escena lleva el aviso «Voz generada con IA»; todos sus segmentos están clonados. En una sección plegable, la app muestra también la opción híbrida.
 
 ![Audio de la escena](docs/capturas/3-narracion.png)
 
@@ -83,7 +83,7 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 ![Licencias de voz y registro de usos](docs/capturas/5-licencias-de-voz.png)
 
-**Qué pasa en vivo y qué está pregenerado:** el plan de narración se arma en vivo con Gemini para cualquier texto. El audio de la escena está pregenerado, porque en CPU generar 38 segundos de audio toma de 13 a 50 minutos, según el modelo. La versión híbrida se armó con los mismos segmentos clonados, con el ruido de fondo reducido, y el segmento 6 grabado por el narrador 1.
+**Qué pasa en vivo y qué está pregenerado:** el plan de narración se arma en vivo con Gemini para cualquier texto. El audio de la escena está pregenerado, porque en CPU generar 38 segundos de audio toma de 13 a 50 minutos, según el modelo.
 
 ```mermaid
 flowchart LR
@@ -103,7 +103,7 @@ flowchart LR
 | Voz de la narradora | Qwen3-TTS 0.6B Base | Clona con 10-25 s de audio, Apache 2.0, corre en CPU. |
 | Voz del juez | VoxCPM2 | Clona y acepta un estilo por frase («árbitro firme, gritando a toda la cancha»). |
 | Control de calidad | Whisper large-v3-turbo (faster-whisper) | Transcribe en la laptop, sin enviar el audio fuera; el WER detecta palabras mal dichas. |
-| Reducción de ruido (escena híbrida) | RNNoise (filtro `arnndn` de ffmpeg, modelo std) | Acerca el fondo de los segmentos clonados al de la voz grabada; corre en la laptop, sin enviar el audio fuera. |
+| Reducción de ruido (opción híbrida) | RNNoise (filtro `arnndn` de ffmpeg, modelo std) | Acerca el fondo de los segmentos clonados al de la voz grabada; corre en la laptop, sin enviar el audio fuera. |
 
 **Cómo correrlo:**
 
@@ -127,9 +127,9 @@ python backend/narrar.py data/plan-narracion-carmelo-cap5.json --motor qwen
 |---|---|---|
 | Por título, voz clonada | Plan de narración, voces con licencia, control de calidad y revisión humana | US$ 220 por hora terminada. El primer título de hasta 30 min, como piloto: US$ 80 |
 | Colección del plan lector | Hasta 12 horas al año con voz de IA (supuesto: unos 26 cuentos como *El caballero Carmelo*, 1 hora de audio al mes) | US$ 2300 al año (unos US$ 190 por hora, 13 % menos a cambio del compromiso anual) |
-| Híbrido: voz humana en las escenas clave | El locutor graba en estudio cerca del 30 % del libro (las escenas que Gemini califica como más importantes, como el clímax; la app limita la selección a cerca del 30 % de las palabras) y su voz clonada narra el resto; el oyente escucha una sola voz | ≈ US$ 320 por hora terminada |
+| Opción híbrida | El locutor graba en estudio las escenas clave (cerca del 30 % del texto) y su voz clonada narra el resto | ≈ US$ 320 por hora terminada |
 
-La narración 100 % humana en estudio se cotiza aparte. El híbrido cuesta de 14 % a 38 % menos que el estudio (≈ US$ 144 por *El caballero Carmelo*), con un margen de 16 % a 30 % para Quriosa; se vende por calidad, no por precio. Propuesta sin validar con editoriales; el cambio entre voz grabada y clonada puede notarse; el demo incluye la escena completa en versión híbrida (el clímax grabado por el narrador 1 y el resto con su voz clonada) y, aun con la reducción de ruido, la voz grabada suena más limpia. Para que suenen igual desde el principio, la voz de referencia del clon y las escenas clave deben grabarse en la misma sesión, con el mismo micrófono y en el mismo estudio.
+**Opción híbrida (secundaria, sin validar con editoriales):** para quien prefiere voz humana. Gemini califica de 1 a 5 la importancia de cada segmento y la app elige los más importantes, hasta cerca del 30 % del texto. Cuesta de 14 % a 38 % menos que el estudio (≈ US$ 144 por *El caballero Carmelo*), con un margen de 16 % a 30 %. En el demo, la voz grabada suena más limpia que la clonada; para que suenen igual, la referencia del clon y las escenas clave deben grabarse en la misma sesión. La narración 100 % humana en estudio se cotiza aparte.
 
 El narrador recibe el 30 % de cada título narrado con su voz. El locutor de la conversación 3 no licenciaría su voz; sin embargo, el narrador 2 aceptó para una obra y sin uso comercial. Quriosa responde a la desconfianza del locutor con la licencia de voz: el locutor decide para qué obra y personaje se usa su voz y por cuánto tiempo, ve cada audio generado con ella y puede retirarla, como se ve en la sección 6 del demo ([captura](docs/capturas/5-licencias-de-voz.png)).
 
@@ -171,8 +171,8 @@ Claude Code fue el socio técnico del proyecto. Susan definió el producto, el c
 
 - **Mercado:** analizó la base de ISBN de la BNP ([notebooks/01_mercado_peruano.py](notebooks/01_mercado_peruano.py)) y resumió el informe de Bookwire ([docs/mercado/](docs/mercado/)).
 - **Plan de narración:** escribió el prompt ([ai/plan_narracion.md](ai/plan_narracion.md)), el esquema JSON y el plan de la escena ([data/plan-narracion-carmelo-cap5.json](data/plan-narracion-carmelo-cap5.json)).
-- **Voz:** escribió [backend/narrar.py](backend/narrar.py) (clonación con Qwen3-TTS y VoxCPM2, control con Whisper), instaló los modelos en una Mac Intel sin GPU y generó y mezcló el audio del demo. Para el plan híbrido, comparó las tomas grabadas por el narrador 1 (WER, ruido de fondo y tono), redujo el ruido de los segmentos clonados con RNNoise y armó la escena híbrida.
-- **App:** escribió [app/app.py](app/app.py), probó qué modelos de Gemini respondían y armó el respaldo, agregó las licencias de voz, las escenas clave del plan híbrido (Gemini califica la importancia y la app controla que no pasen del 30 % del texto) y la calculadora de precios, vectorizó el logo y guió el despliegue en Streamlit Community Cloud.
+- **Voz:** escribió [backend/narrar.py](backend/narrar.py) (clonación con Qwen3-TTS y VoxCPM2, control con Whisper), instaló los modelos en una Mac Intel sin GPU y generó y mezcló el audio del demo. Para la opción híbrida, eligió la toma grabada por el narrador 1, redujo el ruido de los segmentos clonados con RNNoise y armó la escena.
+- **App:** escribió [app/app.py](app/app.py), probó qué modelos de Gemini respondían y armó el respaldo, agregó las licencias de voz, la opción híbrida y la calculadora de precios, vectorizó el logo y guió el despliegue en Streamlit Community Cloud.
 - **Research:** propuso plantillas de las conversaciones, que Susan editó y actualizó, y la autorización de uso de voz que firmó el narrador 2. Transcribió con Whisper las notas de voz de las conversaciones 1 y 3, quitó los nombres y resumió lo aprendido.
 - **Documentación:** este README, con los textos validados por Susan.
 
