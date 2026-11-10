@@ -30,10 +30,10 @@ MODELOS = ["gemini-3.5-flash", "gemini-3.6-flash", "gemini-3-flash-preview",
            "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
 ESPERA_MAXIMA = 60  # segundos en total; después se muestra el plan pregenerado
 PALABRAS_POR_MINUTO = 131  # medido en el audio del demo (83 palabras en 37.9 s)
-PRECIOS = [  # soles por hora de audio terminado (README, «Modelo de negocio»)
-    ("Voz clonada", 800, 800),
-    ("Híbrido: voz humana en las escenas clave", 1200, 1200),
-    ("Estudio, voz 100 % humana", 1400, 1900),
+PRECIOS = [  # dólares por hora de audio terminado (README, «Modelo de negocio»)
+    ("Voz clonada", 220, 220),
+    ("Híbrido: voz humana en las escenas clave", 320, 320),
+    ("Estudio, voz 100 % humana", 370, 520),
 ]
 VOCES = {
     "narrador-1": "Narrador 1 · voz femenina peruana (clonada con permiso)",
@@ -249,34 +249,35 @@ if "plan" in st.session_state:
         st.selectbox(f"{p['nombre']} ({p['id']})", list(VOCES), index=list(VOCES).index(voz),
                      format_func=VOCES.get, key=f"voz-{p['id']}")
 
-    st.subheader("Plan híbrido: escenas clave con voz humana")
     palabras = lambda segs: sum(len(s["texto"].split()) for s in segs)
     claves = [s for s in plan["segmentos"] if s.get("clave")]
     total = palabras(plan["segmentos"])
-    st.write(f"Gemini calificó la importancia de cada segmento (1 a 5) y la app eligió los más importantes "
-             f"hasta cerca del 30 % del texto: **{len(claves)} de {len(plan['segmentos'])} segmentos** "
-             f"({palabras(claves) / total:.0%} de las palabras), que el locutor graba en estudio. "
-             "El resto lo narra su voz clonada: el oyente escucha una sola voz.")
-    if claves:
-        st.dataframe(pd.DataFrame(claves)[["n", "personaje", "importancia", "texto", "motivo_clave"]].rename(
-            columns={"motivo_clave": "por qué es importante"}), hide_index=True, width="stretch")
+    with st.expander("Opción híbrida: voz humana en las escenas clave"):
+        st.write(f"Gemini calificó la importancia de cada segmento (1 a 5) y la app eligió los más importantes "
+                 f"hasta cerca del 30 % del texto: **{len(claves)} de {len(plan['segmentos'])} segmentos** "
+                 f"({palabras(claves) / total:.0%} de las palabras), que el locutor graba en estudio. "
+                 "El resto lo narra su voz clonada: el oyente escucha una sola voz.")
+        if claves:
+            st.dataframe(pd.DataFrame(claves)[["n", "personaje", "importancia", "texto", "motivo_clave"]].rename(
+                columns={"motivo_clave": "por qué es importante"}), hide_index=True, width="stretch")
 
     horas = total / PALABRAS_POR_MINUTO / 60
     st.subheader("Cuánto costaría")
     st.write(f"Este texto dura unos **{horas * 60:.1f} minutos** de audio ({total} palabras a "
              f"{PALABRAS_POR_MINUTO} palabras por minuto).")
-    soles = lambda bajo, alto: f"S/ {bajo:.0f}" if bajo == alto else f"S/ {bajo:.0f} a {alto:.0f}"
-    st.dataframe(pd.DataFrame([{"plan": nombre, "por hora de audio": soles(bajo, alto),
-                                "este texto": soles(bajo * horas, alto * horas)}
+    monto = lambda x: f"{x:.0f}" if x >= 10 else f"{x:.2f}"
+    dolares = lambda bajo, alto: f"US$ {monto(bajo)}" if bajo == alto else f"US$ {monto(bajo)} a {monto(alto)}"
+    st.dataframe(pd.DataFrame([{"plan": nombre, "por hora de audio": dolares(bajo, alto),
+                                "este texto": dolares(bajo * horas, alto * horas)}
                                for nombre, bajo, alto in PRECIOS]), hide_index=True, width="stretch")
     st.caption("Estudio: tarifa de un estudio de audio de Lima más la del locutor (conversación 3). "
-               "El primer título de hasta 30 minutos, como piloto, cuesta S/ 300.")
+               "El primer título de hasta 30 minutos, como piloto, cuesta US$ 80.")
 
     # 4. Narración
     st.header("4. Narración")
-    st.markdown("🔊 **Voz generada con IA.** Narradora: *narrador 1*. Juez: *narrador 2*.")
-    st.caption("En el demo, todos los segmentos están clonados. En el plan híbrido, los segmentos clave "
-               "se grabarían en estudio con la voz real del mismo locutor.")
+    st.subheader("Escena completa con voz clonada")
+    st.markdown("🔊 **Voz generada con IA.** Narradora: *narrador 1*. Juez: *narrador 2*. Es el audiolibro que "
+                "entrega Quriosa en el plan por título: 6 segmentos, 37.9 s, sin errores en el control de calidad.")
     if not es_demo:
         st.info("Generar la voz de un texto nuevo toma varios minutos en el servidor de voz "
                 "(Qwen3-TTS y VoxCPM2). Aquí se escucha la escena de ejemplo.")
@@ -289,23 +290,24 @@ if "plan" in st.session_state:
     st.download_button("Descargar el audio (MP3)", (DEMO / "escena.mp3").read_bytes(),
                        "el-caballero-carmelo-cap5.mp3", "audio/mpeg")
 
-    st.subheader("Plan híbrido: el clímax con voz grabada y con voz clonada")
-    st.write("El segmento 6 es el clímax de la escena. En el plan híbrido, el locutor lo graba en estudio; "
-             "aquí se escucha la misma frase grabada por el narrador 1 y generada con su voz clonada.")
-    c1, c2 = st.columns(2)
-    with c1:
-        st.markdown("🎙️ **Voz humana, grabada** (narrador 1)")
-        st.audio(str(DEMO / "segmento-06-narrador-humano.mp3"))
-        st.caption("12.2 s de habla · Whisper: WER 0, sin errores")
-    with c2:
-        st.markdown("🔊 **Voz generada con IA** (clon del narrador 1)")
-        st.audio(str(DEMO / "segmento-06-narrador.mp3"))
-        st.caption("8.8 s de habla · Whisper: WER 0, sin errores")
-    st.markdown("**Escena completa, versión híbrida.** Segmentos 1 a 5: 🔊 voz generada con IA · "
-                "segmento 6: 🎙️ voz humana grabada.")
-    st.audio(str(DEMO / "escena-hibrida.mp3"))
-    st.caption("41.2 s · a los segmentos clonados se les redujo el ruido de fondo (RNNoise) para acercarlos a la voz "
-               "grabada · Whisper transcribe la escena completa sin errores (WER 0).")
+    with st.expander("Opción híbrida: el clímax con voz grabada y con voz clonada"):
+        st.write("En la opción híbrida, el locutor graba en estudio solo las escenas clave, y su voz clonada narra "
+                 "el resto. Aquí se escucha el clímax de la escena (segmento 6) en la versión leída por el narrador 1 "
+                 "y en la versión generada con su voz clonada:")
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("🎙️ **Voz humana, grabada** (narrador 1)")
+            st.audio(str(DEMO / "segmento-06-narrador-humano.mp3"))
+            st.caption("12.2 s de habla · Whisper: WER 0, sin errores")
+        with c2:
+            st.markdown("🔊 **Voz generada con IA** (clon del narrador 1)")
+            st.audio(str(DEMO / "segmento-06-narrador.mp3"))
+            st.caption("8.8 s de habla · Whisper: WER 0, sin errores")
+        st.markdown("**Escena completa, versión híbrida.** Segmentos 1 a 5: 🔊 voz generada con IA · "
+                    "segmento 6: 🎙️ voz humana grabada.")
+        st.audio(str(DEMO / "escena-hibrida.mp3"))
+        st.caption("41.2 s · a los segmentos clonados se les redujo el ruido de fondo (RNNoise) para acercarlos a la "
+                   "voz grabada · Whisper transcribe la escena completa sin errores (WER 0).")
 
     # 5. Control de calidad
     st.header("5. Control de calidad")

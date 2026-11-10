@@ -20,17 +20,17 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 **Quién lo sufre:** las editoriales escolares peruanas que publican literatura infantil y juvenil para el plan lector. Son pocas y concentran el mercado: Santillana registró la mitad de los 447 audiolibros con ISBN del Perú entre 2015 y 2025, y el 57 % de esos audiolibros es para niños y jóvenes ([análisis](docs/mercado/04-panorama-mercado-audiolibros.md)).
 
-**Cuánto les cuesta:** producir un audiolibro hoy exige estudio de grabación, un narrador por horas, dirección y edición. Un estudio de audio de Lima cobra S/ 150 por hora de grabación con operador y S/ 150 por hora de edición. Editar una sola voz toma el doble del tiempo de grabación, y una ficción sonora con varios personajes, el cuádruple o más. El locutor cobra aparte: de 100 a 250 dólares por hora, según su experiencia (tarifa referencial de la asociación de locutores, [conversación 3](docs/research/conversacion-3.md)).
+**Cuánto les cuesta:** producir un audiolibro hoy exige estudio de grabación, un narrador por horas, dirección y edición. Un estudio de audio de Lima cobra S/ 150 (unos US$ 41) por hora de grabación con operador y lo mismo por hora de edición. Editar una sola voz toma el doble del tiempo de grabación, y una ficción sonora con varios personajes, el cuádruple o más. El locutor cobra aparte: de 100 a 250 dólares por hora, según su experiencia (tarifa referencial de la asociación de locutores, [conversación 3](docs/research/conversacion-3.md)).
 
-**Cuánto paga hoy una editorial por un audiolibro grabado en estudio**, con el desglose de *El caballero Carmelo* (unos 27 minutos de audio; se asume 1 hora de estudio y la tarifa del locutor por hora terminada, a S/ 3.7 por dólar):
+**Cuánto paga hoy una editorial por un audiolibro grabado en estudio**, con el desglose de *El caballero Carmelo* (unos 27 minutos de audio; se asume 1 hora de estudio y la tarifa del locutor por hora terminada; soles a dólares a S/ 3.7 por dólar):
 
 | | Voz 100 % humana: el locutor graba todo el libro | Ficción sonora 100 % humana: varios actores graban |
 |---|---|---|
-| **Por hora de audio terminado** | **S/ 1400 a 1900** | **S/ 2000 a 2600 o más** |
-| ***El caballero Carmelo* (27 min)** | **S/ 620 a 870** | **S/ 920 a 1170 o más** |
-| Estudio y operador | S/ 150 (1 h) | S/ 150 (1 h) |
-| Edición | S/ 300 (2 h) | S/ 600 o más (4 h o más) |
-| Locutor | S/ 170 a 420 | S/ 170 a 420 por cada actor |
+| **Por hora de audio terminado** | **US$ 370 a 520** | **US$ 550 a 700 o más** |
+| ***El caballero Carmelo* (27 min)** | **US$ 167 a 234** | **US$ 248 a 315 o más** |
+| Estudio y operador | US$ 41 (1 h) | US$ 41 (1 h) |
+| Edición | US$ 81 (2 h) | US$ 162 o más (4 h o más) |
+| Locutor | US$ 45 a 112 | US$ 45 a 112 por cada actor |
 | Horas de trabajo de personas | 3 h | 5 h o más |
 | Agenda | Locutor, operador y estudio el mismo día | Cada actor, operador y estudio |
 
@@ -125,34 +125,34 @@ python backend/narrar.py data/plan-narracion-carmelo-cap5.json --motor qwen
 
 | Plan | Qué incluye | Precio |
 |---|---|---|
-| Por título, voz clonada | Plan de narración, voces con licencia, control de calidad y revisión humana | S/ 800 por hora terminada. El primer título de hasta 30 min, como piloto: S/ 300 |
-| Colección del plan lector | Hasta 12 horas al año con voz de IA (supuesto: unos 26 cuentos como *El caballero Carmelo*, 1 hora de audio al mes) | S/ 8400 al año (S/ 700 por hora, 12.5 % menos a cambio del compromiso anual) |
-| Híbrido: voz humana en las escenas clave | El locutor graba en estudio cerca del 30 % del libro (las escenas que Gemini califica como más importantes, como el clímax; la app limita la selección a cerca del 30 % de las palabras) y su voz clonada narra el resto; el oyente escucha una sola voz | ≈ S/ 1200 por hora terminada |
+| Por título, voz clonada | Plan de narración, voces con licencia, control de calidad y revisión humana | US$ 220 por hora terminada. El primer título de hasta 30 min, como piloto: US$ 80 |
+| Colección del plan lector | Hasta 12 horas al año con voz de IA (supuesto: unos 26 cuentos como *El caballero Carmelo*, 1 hora de audio al mes) | US$ 2300 al año (unos US$ 190 por hora, 13 % menos a cambio del compromiso anual) |
+| Híbrido: voz humana en las escenas clave | El locutor graba en estudio cerca del 30 % del libro (las escenas que Gemini califica como más importantes, como el clímax; la app limita la selección a cerca del 30 % de las palabras) y su voz clonada narra el resto; el oyente escucha una sola voz | ≈ US$ 320 por hora terminada |
 
-La narración 100 % humana en estudio se cotiza aparte. El híbrido cuesta de 13 % a 38 % menos que el estudio (≈ S/ 540 por *El caballero Carmelo*), con un margen de 17 % a 31 % para Quriosa; se vende por calidad, no por precio. Propuesta sin validar con editoriales; el cambio entre voz grabada y clonada puede notarse; el demo incluye la escena completa en versión híbrida (el clímax grabado por el narrador 1 y el resto con su voz clonada) y, aun con la reducción de ruido, la voz grabada suena más limpia. Para que suenen igual desde el principio, la voz de referencia del clon y las escenas clave deben grabarse en la misma sesión, con el mismo micrófono y en el mismo estudio.
+La narración 100 % humana en estudio se cotiza aparte. El híbrido cuesta de 14 % a 38 % menos que el estudio (≈ US$ 144 por *El caballero Carmelo*), con un margen de 16 % a 30 % para Quriosa; se vende por calidad, no por precio. Propuesta sin validar con editoriales; el cambio entre voz grabada y clonada puede notarse; el demo incluye la escena completa en versión híbrida (el clímax grabado por el narrador 1 y el resto con su voz clonada) y, aun con la reducción de ruido, la voz grabada suena más limpia. Para que suenen igual desde el principio, la voz de referencia del clon y las escenas clave deben grabarse en la misma sesión, con el mismo micrófono y en el mismo estudio.
 
 El narrador recibe el 30 % de cada título narrado con su voz. El locutor de la conversación 3 no licenciaría su voz; sin embargo, el narrador 2 aceptó para una obra y sin uso comercial. Quriosa responde a la desconfianza del locutor con la licencia de voz: el locutor decide para qué obra y personaje se usa su voz y por cuánto tiempo, ve cada audio generado con ella y puede retirarla, como se ve en la sección 6 del demo ([captura](docs/capturas/5-licencias-de-voz.png)).
 
-**Comparación con *El caballero Carmelo*:** hoy, en estudio con voz 100 % humana, cuesta de S/ 620 a 870 y 3 horas de trabajo de personas (ver [Problema](#problema)). Con Quriosa y la voz clonada de un locutor que licenció su voz, cuesta **S/ 360**, de 42 % a 59 % menos: incluye S/ 108 para el locutor, que grabó unos 20 segundos una sola vez, y alrededor de 1 hora de revisión humana, sin estudio ni agenda.
+**Comparación con *El caballero Carmelo*:** hoy, en estudio con voz 100 % humana, cuesta de US$ 167 a 234 y 3 horas de trabajo de personas (ver [Problema](#problema)). Con Quriosa y la voz clonada de un locutor que licenció su voz, cuesta **US$ 99**, de 41 % a 58 % menos: incluye US$ 30 para el locutor, que grabó unos 20 segundos una sola vez, y alrededor de 1 hora de revisión humana, sin estudio ni agenda.
 
-**Referencia:** grabar con una persona cuesta en España unos 289 € por hora terminada ([Agencia Podcast](https://agenciapodcast.com/el-precio-o-el-coste-del-audio/)) y entre 349 y 499 € en un servicio comercial ([BoD](https://www.bod.com.es/servicios/audiolibro)); en EE. UU., entre 100 y 400 dólares solo la locución ([Scuadra Digital](https://scuadradigital.com/como-se-cobra-un-audiolibro/)). Unos S/ 1200 a 2000 por hora. En Lima, entre el estudio de audio y el locutor, el equivalente a S/ 1400 a 2600 o más por hora terminada (ver [Problema](#problema)). Con voz de IA, Quriosa cuesta de 43 % a 69 % menos.
+**Referencia:** grabar con una persona cuesta en España unos 289 € por hora terminada ([Agencia Podcast](https://agenciapodcast.com/el-precio-o-el-coste-del-audio/)) y entre 349 y 499 € en un servicio comercial ([BoD](https://www.bod.com.es/servicios/audiolibro)); en EE. UU., entre 100 y 400 dólares solo la locución ([Scuadra Digital](https://scuadradigital.com/como-se-cobra-un-audiolibro/)). Unos US$ 320 a 540 por hora. En Lima, entre el estudio de audio y el locutor, unos US$ 370 a 700 o más por hora terminada (ver [Problema](#problema)). Con voz de IA, Quriosa cuesta de 41 % a 69 % menos.
 
 **Cuánto cuesta cada título (medido con el demo):**
-- **Plan de narración:** la escena de 83 palabras usó 3766 tokens de Gemini. El cuento completo (3556 palabras, unos 27 minutos de audio) usaría unos 160 000 tokens: S/ 0 en el nivel gratuito. Con plan de pago (Gemini 3.5 Flash a US$ 1.50 por millón de tokens de entrada y US$ 9 por millón de salida, según agregadores), unos US$ 3 (≈ S/ 11) por hora terminada.
-- **Voz:** en la laptop (CPU), Qwen3-TTS tarda unos 17 minutos por cada minuto de audio: el cuento completo tomaría unas 8 horas. Supuesto: unos S/ 5 por hora terminada en un servidor con GPU (alquiler por horas de un servidor en la nube; Qwen3-TTS, VoxCPM2 y Whisper son modelos abiertos y gratuitos).
-- **Revisión humana:** supuesto de 1 hora para *El caballero Carmelo* (unas 2 horas por cada hora de audio), a S/ 150 por hora (tarifa de edición del estudio de Lima). Whisper marca qué frases revisar, así que no hace falta escuchar todo el audio.
+- **Plan de narración:** la escena de 83 palabras usó 3766 tokens de Gemini. El cuento completo (3556 palabras, unos 27 minutos de audio) usaría unos 160 000 tokens: US$ 0 en el nivel gratuito. Con plan de pago (Gemini 3.5 Flash a US$ 1.50 por millón de tokens de entrada y US$ 9 por millón de salida, según agregadores), unos US$ 3 por hora terminada.
+- **Voz:** en la laptop (CPU), Qwen3-TTS tarda unos 17 minutos por cada minuto de audio: el cuento completo tomaría unas 8 horas. Supuesto: unos US$ 1.35 (S/ 5) por hora terminada en un servidor con GPU (alquiler por horas de un servidor en la nube; Qwen3-TTS, VoxCPM2 y Whisper son modelos abiertos y gratuitos).
+- **Revisión humana:** supuesto de 1 hora para *El caballero Carmelo* (unas 2 horas por cada hora de audio), a unos US$ 41 por hora (S/ 150, tarifa de edición del estudio de Lima). Whisper marca qué frases revisar, así que no hace falta escuchar todo el audio.
 
 **Margen de contribución con *El caballero Carmelo*** (27 minutos, plan por título con voz de IA):
 
-| | Soles |
+| | Dólares |
 |---|---|
-| Precio (S/ 800 por hora × 0.45 h) | 360 |
-| Narrador (30 %) | − 108 |
-| Gemini (plan de pago) | − 5 |
-| Servidor con GPU | − 2 |
-| **Margen antes de la revisión** | **245 (68 %)** |
-| Revisión humana (1 h × S/ 150) | − 150 |
-| **Margen final** | **95 (26 %)** |
+| Precio (US$ 220 por hora × 0.45 h) | 99.0 |
+| Narrador (30 %) | − 29.7 |
+| Gemini (plan de pago) | − 1.4 |
+| Servidor con GPU | − 0.6 |
+| **Margen antes de la revisión** | **67.3 (68 %)** |
+| Revisión humana (1 h × US$ 40.5) | − 40.5 |
+| **Margen final** | **26.8 (27 %)** |
 
 La revisión humana es el costo más grande. Para que el margen crezca, la revisión debe tomar menos tiempo (solo las frases que marca Whisper) o hacerla la editorial, que ya revisa sus libros.
 
