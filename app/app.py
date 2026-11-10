@@ -149,9 +149,10 @@ def cobertura(texto, plan):
 tema = getattr(getattr(st.context, "theme", None), "type", None)  # el logo cambia con el modo claro u oscuro
 st.image(str(ASSETS / ("logo-oscuro.svg" if tema == "dark" else "logo.svg")), width=380)
 st.markdown("**Convierte los libros infantiles y juveniles de las editoriales escolares peruanas en audiolibros "
-            "narrados con voces peruanas clonadas con permiso.**")
+            "narrados con voces peruanas replicadas con permiso.**")
 st.caption("Demo con *El caballero Carmelo*, de Abraham Valdelomar (dominio público). "
-           "Todas las voces son generadas con IA a partir de narradores que autorizaron su clonación.")
+           "Las voces replicadas con IA son de narradores que autorizaron su uso; en el plan híbrido, el clímax "
+           "se escucha también con la voz humana grabada.")
 
 demo = plan_demo()
 texto_demo = texto_de(demo)
@@ -248,70 +249,70 @@ if "plan" in st.session_state:
                                for nombre, bajo, alto in PRECIOS]), hide_index=True, width="stretch")
     st.caption("Estudio: tarifa de un estudio de audio de Lima más la del locutor (conversación 3). "
                "El primer título de hasta 30 minutos, como piloto, cuesta S/ 300.")
+
+    # 4. Narración
+    st.header("4. Narración")
+    st.markdown("🔊 **Voz generada con IA.** Narradora: *narrador 1*. Juez: *narrador 2*.")
+    st.caption("En el demo, todos los segmentos están clonados. En el plan híbrido, los segmentos clave "
+               "se grabarían en estudio con la voz real del mismo locutor.")
+    if not es_demo:
+        st.info("Generar la voz de un texto nuevo toma varios minutos en el servidor de voz "
+                "(Qwen3-TTS y VoxCPM2). Aquí se escucha la escena de ejemplo.")
+    st.audio(str(DEMO / "escena.mp3"))
+    calidad = json.loads((DEMO / "control-calidad.json").read_text(encoding="utf-8"))
+    with st.expander("Escuchar cada segmento"):
+        for q in calidad:
+            st.markdown(f"**{q['n']}. {q['personaje'].capitalize()}** · {q['texto_tts']}")
+            st.audio(str(DEMO / f"segmento-{q['n']:02d}-{q['personaje']}.mp3"))
+    st.download_button("Descargar el audio (MP3)", (DEMO / "escena.mp3").read_bytes(),
+                       "el-caballero-carmelo-cap5.mp3", "audio/mpeg")
+
+    st.subheader("Plan híbrido: el clímax con voz grabada y con voz clonada")
+    st.write("El segmento 6 es el clímax de la escena. En el plan híbrido, el locutor lo graba en estudio; "
+             "aquí se escucha la misma frase grabada por el narrador 1 y generada con su voz clonada.")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown("🎙️ **Voz humana, grabada** (narrador 1)")
+        st.audio(str(DEMO / "segmento-06-narrador-humano.mp3"))
+        st.caption("12.2 s de habla · Whisper: WER 0, sin errores")
+    with c2:
+        st.markdown("🔊 **Voz generada con IA** (clon del narrador 1)")
+        st.audio(str(DEMO / "segmento-06-narrador.mp3"))
+        st.caption("8.8 s de habla · Whisper: WER 0, sin errores")
+    st.markdown("**Escena completa, versión híbrida.** Segmentos 1 a 5: 🔊 voz generada con IA · "
+                "segmento 6: 🎙️ voz humana grabada.")
+    st.audio(str(DEMO / "escena-hibrida.mp3"))
+    st.caption("41.2 s · a los segmentos clonados se les redujo el ruido de fondo (RNNoise) para acercarlos a la voz "
+               "grabada · Whisper transcribe la escena completa sin errores (WER 0).")
+
+    # 5. Control de calidad
+    st.header("5. Control de calidad")
+    st.write("Whisper (large-v3-turbo) transcribe cada segmento y lo compara con el texto. Si la tasa de error "
+             "de palabras (WER) supera el umbral, el segmento se vuelve a generar.")
+    qc = pd.DataFrame(calidad)
+    qc["resultado"] = qc["wer"].map(lambda w: "✅ aprobado" if w <= 0.1 else "⚠️ revisar")
+    st.dataframe(qc[["n", "personaje", "wer", "resultado", "texto_tts", "oido"]].rename(
+        columns={"texto_tts": "texto esperado", "oido": "lo que oyó Whisper", "wer": "WER"}),
+        hide_index=True, width="stretch")
+
+    # 6. Licencias de voz
+    st.header("6. Licencias de voz")
+    st.write("Cada narrador controla su voz clonada: para qué obra y personaje se usa, dónde se publica, "
+             "cada audio que se generó con ella y cómo retirarla.")
+    licencias = json.loads((DEMO / "licencias.json").read_text(encoding="utf-8"))
+    for col, lic in zip(st.columns(len(licencias)), licencias.values()):
+        with col.container(border=True):
+            st.subheader(lic["titulo"])
+            st.markdown("\n".join(f"- **{campo}:** {lic[clave_]}" for campo, clave_ in [
+                ("Autorización", "autorizacion"), ("Obra", "obra"), ("Personaje", "personaje"),
+                ("Dónde se usa", "donde"), ("Uso comercial", "uso_comercial"), ("Pago", "pago"),
+                ("Retiro", "retiro"), ("Grabación de referencia", "referencia"), ("Modelo", "motor")]))
+            usos = pd.DataFrame(lic["usos"])
+            st.markdown(f"**Registro de usos:** {len(usos)} segmentos · {usos['segundos'].sum():.1f} s de audio "
+                        "· todos con el aviso «Voz generada con IA»")
+            st.dataframe(usos, hide_index=True, width="stretch")
 else:
     st.info("Presiona **Armar plan con IA** para ver el plan de narración.")
-
-# 4. Narración
-st.header("4. Narración")
-st.markdown("🔊 **Voz generada con IA.** Narradora: *narrador 1*. Juez: *narrador 2*.")
-st.caption("En el demo, todos los segmentos están clonados. En el plan híbrido, los segmentos clave "
-           "se grabarían en estudio con la voz real del mismo locutor.")
-if not es_demo:
-    st.info("Generar la voz de un texto nuevo toma varios minutos en el servidor de voz "
-            "(Qwen3-TTS y VoxCPM2). Aquí se escucha la escena de ejemplo.")
-st.audio(str(DEMO / "escena.mp3"))
-calidad = json.loads((DEMO / "control-calidad.json").read_text(encoding="utf-8"))
-with st.expander("Escuchar cada segmento"):
-    for q in calidad:
-        st.markdown(f"**{q['n']}. {q['personaje'].capitalize()}** · {q['texto_tts']}")
-        st.audio(str(DEMO / f"segmento-{q['n']:02d}-{q['personaje']}.mp3"))
-st.download_button("Descargar el audio (MP3)", (DEMO / "escena.mp3").read_bytes(),
-                   "el-caballero-carmelo-cap5.mp3", "audio/mpeg")
-
-st.subheader("Plan híbrido: el clímax con voz grabada y con voz clonada")
-st.write("El segmento 6 es el clímax de la escena. En el plan híbrido, el locutor lo graba en estudio; "
-         "aquí se escucha la misma frase grabada por el narrador 1 y generada con su voz clonada.")
-c1, c2 = st.columns(2)
-with c1:
-    st.markdown("🎙️ **Voz humana, grabada** (narrador 1)")
-    st.audio(str(DEMO / "segmento-06-narrador-humano.mp3"))
-    st.caption("12.2 s de habla · Whisper: WER 0, sin errores")
-with c2:
-    st.markdown("🔊 **Voz generada con IA** (clon del narrador 1)")
-    st.audio(str(DEMO / "segmento-06-narrador.mp3"))
-    st.caption("8.8 s de habla · Whisper: WER 0, sin errores")
-st.markdown("**Escena completa, versión híbrida.** Segmentos 1 a 5: 🔊 voz generada con IA · "
-            "segmento 6: 🎙️ voz humana grabada.")
-st.audio(str(DEMO / "escena-hibrida.mp3"))
-st.caption("41.2 s · a los segmentos clonados se les redujo el ruido de fondo (RNNoise) para acercarlos a la voz "
-           "grabada · Whisper transcribe la escena completa sin errores (WER 0).")
-
-# 5. Control de calidad
-st.header("5. Control de calidad")
-st.write("Whisper (large-v3-turbo) transcribe cada segmento y lo compara con el texto. Si la tasa de error "
-         "de palabras (WER) supera el umbral, el segmento se vuelve a generar.")
-qc = pd.DataFrame(calidad)
-qc["resultado"] = qc["wer"].map(lambda w: "✅ aprobado" if w <= 0.1 else "⚠️ revisar")
-st.dataframe(qc[["n", "personaje", "wer", "resultado", "texto_tts", "oido"]].rename(
-    columns={"texto_tts": "texto esperado", "oido": "lo que oyó Whisper", "wer": "WER"}),
-    hide_index=True, width="stretch")
-
-# 6. Licencias de voz
-st.header("6. Licencias de voz")
-st.write("Cada narrador controla su voz clonada: para qué obra y personaje se usa, dónde se publica, "
-         "cada audio que se generó con ella y cómo retirarla.")
-licencias = json.loads((DEMO / "licencias.json").read_text(encoding="utf-8"))
-for col, lic in zip(st.columns(len(licencias)), licencias.values()):
-    with col.container(border=True):
-        st.subheader(lic["titulo"])
-        st.markdown("\n".join(f"- **{campo}:** {lic[clave_]}" for campo, clave_ in [
-            ("Autorización", "autorizacion"), ("Obra", "obra"), ("Personaje", "personaje"),
-            ("Dónde se usa", "donde"), ("Uso comercial", "uso_comercial"), ("Pago", "pago"),
-            ("Retiro", "retiro"), ("Grabación de referencia", "referencia"), ("Modelo", "motor")]))
-        usos = pd.DataFrame(lic["usos"])
-        st.markdown(f"**Registro de usos:** {len(usos)} segmentos · {usos['segundos'].sum():.1f} s de audio "
-                    "· todos con el aviso «Voz generada con IA»")
-        st.dataframe(usos, hide_index=True, width="stretch")
 
 st.divider()
 st.caption("Quriosa · proyecto final de la Diplomatura de Ciencia de Datos de Q-Lab PUCP · "

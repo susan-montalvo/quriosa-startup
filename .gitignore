@@ -21,3 +21,6 @@ node_modules/
 
 # macOS
 .DS_Store
+
+# Audios originales de las conversaciones (datos personales; no se publican)
+privado/

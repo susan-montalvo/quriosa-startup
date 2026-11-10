@@ -15,7 +15,7 @@
 
 ## Respuestas
 
-Respondió con dos notas de voz; a la pregunta 5, con un mensaje de texto y la segunda nota de voz. Notas transcritas con Whisper large-v3-turbo; su nombre y el de la editorial se reemplazaron por [el locutor] y [la editorial].
+Respondió con dos notas de voz; a la pregunta 5, con un mensaje de texto y la segunda nota de voz. Notas transcritas con Whisper large-v3-turbo; su nombre y el de la editorial se reemplazaron por [el locutor] y [la editorial]. Los audios originales y el mensaje de texto están archivados de forma privada y no se publican.
 
 1. Si van a pedir otras cotizaciones, no les pidan a los locutores que les cobren por hora. Ese es el error, porque normalmente los locutores lo que hacen es equivocarse o tomarse más tiempo el debido y te cobran más horas. Por eso es que desde la asociación de locutores lo que hemos hecho ha sido establecer un monto por hora referencial que está entre 100 y 250 dólares, dependiendo del locutor, obviamente. Porque hay locutores más jóvenes que no tienen experiencia y te cobran 100 dólares. Y otros de más experiencia te cobramos un poco más.
 

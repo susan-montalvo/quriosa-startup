@@ -18,7 +18,7 @@
 
 ## Respuestas
 
-Copiadas tal como las envió por escrito, sin corregir.
+Copiadas tal como las envió por escrito, sin corregir. La captura original del chat está archivada de forma privada y no se publica.
 
 1. Desde mi trabajo, no. Quizá porque no conozco mucho sobre audiolibros. No los consumo. Y tampoco los he explorado. Sería Bacan usarlo pero no conozco su potencial. 
 

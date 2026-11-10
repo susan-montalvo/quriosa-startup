@@ -20,7 +20,7 @@
 
 ## Respuestas
 
-Respondió con notas de voz. Transcritas con Whisper large-v3-turbo; el nombre de la editorial se reemplazó por [la editorial].
+Respondió con notas de voz. Transcritas con Whisper large-v3-turbo; el nombre de la editorial se reemplazó por [la editorial]. Los audios originales están archivados de forma privada y no se publican.
 
 1. No, [la editorial] no tiene audiolibros y tampoco nos encontramos en proceso. En realidad no está dentro de nuestra mirada en el corto plazo.
 

@@ -1,6 +1,6 @@
 # Quriosa
 
-> Quriosa convierte los libros infantiles y juveniles de las editoriales escolares peruanas en audiolibros narrados con voces peruanas clonadas con permiso.
+> Quriosa convierte los libros infantiles y juveniles de las editoriales escolares peruanas en audiolibros narrados con voces peruanas replicadas con permiso.
 
 **Demo:** https://quriosa.streamlit.app/
 
