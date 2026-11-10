@@ -94,9 +94,9 @@ ESQUEMA = {
         "segmentos": {"type": "ARRAY", "items": {"type": "OBJECT", "properties": {
             "n": {"type": "INTEGER"}, "personaje": TEXTO, "texto": TEXTO, "texto_tts": TEXTO,
             "estilo": TEXTO, "estilo_tts": TEXTO, "pausa_despues_ms": {"type": "INTEGER"},
-            "clave": {"type": "BOOLEAN"}, "motivo_clave": TEXTO},
+            "importancia": {"type": "INTEGER"}, "motivo_clave": TEXTO},
             "required": ["n", "personaje", "texto", "texto_tts", "estilo", "estilo_tts", "pausa_despues_ms",
-                         "clave", "motivo_clave"]}},
+                         "importancia", "motivo_clave"]}},
         "pronunciacion": {"type": "ARRAY", "items": {"type": "OBJECT", "properties": {
             "palabra": TEXTO, "como_se_dice": TEXTO, "nota": TEXTO},
             "required": ["palabra", "como_se_dice", "nota"]}},
@@ -136,6 +136,26 @@ def armar_plan(texto, obra, autor):
         except Exception as e:  # tiempo agotado, respuesta incompleta…
             errores.append(f"{modelo}: {type(e).__name__}")
     raise RuntimeError("; ".join(errores))
+
+
+def marcar_claves(segmentos, meta=0.30, tope=0.40):
+    """Plan híbrido: elige los segmentos más importantes hasta cerca del 30 % de las palabras.
+
+    Gemini solo califica la importancia (1 a 5); la proporción la controla la app. Un segmento no se parte:
+    se salta el que haría pasar el total del 40 %, y siempre se marca al menos uno."""
+    palabras = {s["n"]: len(s["texto"].split()) for s in segmentos}
+    total = sum(palabras.values()) or 1
+    marcados, acumulado = set(), 0
+    for s in sorted(segmentos, key=lambda s: (-s.get("importancia", 0), s["n"])):
+        if acumulado / total >= meta:
+            break
+        if marcados and (acumulado + palabras[s["n"]]) / total > tope:
+            continue
+        marcados.add(s["n"])
+        acumulado += palabras[s["n"]]
+    for s in segmentos:
+        s["clave"] = s["n"] in marcados
+    return segmentos
 
 
 def cobertura(texto, plan):
@@ -186,6 +206,7 @@ if st.button("✨ Armar plan con IA", type="primary"):
 
 if "plan" in st.session_state:
     plan, modelo, segundos, problema = st.session_state.plan
+    marcar_claves(plan["segmentos"])
     if problema:
         st.warning(f"{problema} Se muestra el plan pregenerado de la escena de ejemplo.")
     else:
@@ -232,12 +253,13 @@ if "plan" in st.session_state:
     palabras = lambda segs: sum(len(s["texto"].split()) for s in segs)
     claves = [s for s in plan["segmentos"] if s.get("clave")]
     total = palabras(plan["segmentos"])
-    st.write(f"Gemini marcó **{len(claves)} de {len(plan['segmentos'])} segmentos** "
-             f"({palabras(claves) / total:.0%} de las palabras) para que el locutor los grabe en estudio. "
+    st.write(f"Gemini calificó la importancia de cada segmento (1 a 5) y la app eligió los más importantes "
+             f"hasta cerca del 30 % del texto: **{len(claves)} de {len(plan['segmentos'])} segmentos** "
+             f"({palabras(claves) / total:.0%} de las palabras), que el locutor graba en estudio. "
              "El resto lo narra su voz clonada: el oyente escucha una sola voz.")
     if claves:
-        st.dataframe(pd.DataFrame(claves)[["n", "personaje", "texto", "motivo_clave"]].rename(
-            columns={"motivo_clave": "por qué es clave"}), hide_index=True, width="stretch")
+        st.dataframe(pd.DataFrame(claves)[["n", "personaje", "importancia", "texto", "motivo_clave"]].rename(
+            columns={"motivo_clave": "por qué es importante"}), hide_index=True, width="stretch")
 
     horas = total / PALABRAS_POR_MINUTO / 60
     st.subheader("Cuánto costaría")

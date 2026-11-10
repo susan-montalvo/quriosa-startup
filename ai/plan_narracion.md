@@ -27,10 +27,10 @@ Lista las palabras que un modelo de voz podría leer mal: nombres propios peruan
 
 Señala los posibles errores tipográficos del texto, con lo que dice, lo que probablemente debería decir y el contexto. No los corrijas en los segmentos: una persona decide.
 
-## Plan híbrido: escenas clave para voz humana
+## Plan híbrido: importancia de cada segmento
 
-Quriosa ofrece un plan híbrido: el locutor graba en estudio las escenas clave y su voz clonada narra el resto. Marca con `clave: true` los segmentos donde la interpretación humana aporta más: el inicio que engancha, el clímax, los diálogos con más carga emocional y el desenlace.
+Quriosa ofrece un plan híbrido: el locutor graba en estudio las escenas clave y su voz clonada narra el resto. Tú solo calificas cada segmento; la app elige después cuáles se graban (cerca del 30 % de las palabras).
 
-- Apunta a cerca del 30 % de las palabras del fragmento, no de los segmentos.
-- Marca bloques de segmentos seguidos, no frases sueltas: cada cambio entre voz grabada y clonada puede notarse.
-- En `motivo_clave` explica en pocas palabras y en español por qué es clave; si no lo es, deja "".
+- `importancia`: de 1 a 5, cuánto aporta la interpretación humana en ese segmento. 5 = clímax o desenlace; 4 = diálogo con mucha carga emocional o giro de la historia; 3 = inicio que engancha o tensión creciente; 2 = narración con algo de emoción; 1 = descripción o transición.
+- Usa todo el rango: en un fragmento, pocos segmentos merecen 5.
+- `motivo_clave`: en pocas palabras y en español, por qué tiene esa importancia.

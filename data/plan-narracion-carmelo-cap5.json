@@ -55,8 +55,8 @@
       "estilo": "suspenso, tensión contenida",
       "estilo_tts": "suspenseful storyteller, hushed voice, building tension",
       "pausa_despues_ms": 400,
-      "clave": false,
-      "motivo_clave": ""
+      "importancia": 2,
+      "motivo_clave": "Prepara la intervención del juez."
     },
     {
       "n": 2,
@@ -66,8 +66,8 @@
       "estilo": "hombre mayor, firme, autoritario, se dirige a toda la cancha",
       "estilo_tts": "older man, firm and authoritative referee, shouting loudly to the whole arena, strong emphasis",
       "pausa_despues_ms": 900,
-      "clave": false,
-      "motivo_clave": ""
+      "importancia": 4,
+      "motivo_clave": "Giro de la pelea: el juez anuncia que el Carmelo sigue vivo."
     },
     {
       "n": 3,
@@ -77,8 +77,8 @@
       "estilo": "asombro, renace la esperanza",
       "estilo_tts": "astonished storyteller, hope rising in the voice",
       "pausa_despues_ms": 600,
-      "clave": false,
-      "motivo_clave": ""
+      "importancia": 3,
+      "motivo_clave": "El Carmelo se levanta; crece la tensión."
     },
     {
       "n": 4,
@@ -88,8 +88,8 @@
       "estilo": "lento, con desdén hacia el rival",
       "estilo_tts": "slow and scornful storyteller",
       "pausa_despues_ms": 400,
-      "clave": false,
-      "motivo_clave": ""
+      "importancia": 2,
+      "motivo_clave": "Descripción de la actitud del rival."
     },
     {
       "n": 5,
@@ -99,8 +99,8 @@
       "estilo": "crece, épico, con orgullo",
       "estilo_tts": "epic and proud storyteller, voice rising with emotion",
       "pausa_despues_ms": 500,
-      "clave": false,
-      "motivo_clave": ""
+      "importancia": 4,
+      "motivo_clave": "Resurge el coraje del Carmelo; carga emocional alta."
     },
     {
       "n": 6,
@@ -110,7 +110,7 @@
       "estilo": "rápido e intenso; el clímax de la escena",
       "estilo_tts": "fast, intense and dramatic storyteller, the climax of the fight",
       "pausa_despues_ms": 900,
-      "clave": true,
+      "importancia": 5,
       "motivo_clave": "Clímax del combate y estocada final del protagonista."
     }
   ],
