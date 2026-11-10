@@ -166,8 +166,7 @@ def cobertura(texto, plan):
 
 # Página -------------------------------------------------------------------------------
 
-tema = getattr(getattr(st.context, "theme", None), "type", None)  # el logo cambia con el modo claro u oscuro
-st.image(str(ASSETS / ("logo-oscuro.svg" if tema == "dark" else "logo.svg")), width=380)
+st.image(str(ASSETS / "logo.svg"), width=380)  # la app es siempre clara (.streamlit/config.toml)
 st.markdown("**Convierte los libros infantiles y juveniles de las editoriales escolares peruanas en audiolibros "
             "narrados con voces peruanas replicadas con permiso.**")
 st.caption("Demo con *El caballero Carmelo*, de Abraham Valdelomar (dominio público). "
