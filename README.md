@@ -67,9 +67,9 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 ![Plan de narración armado por Gemini](docs/capturas/1-plan-de-narracion.png)
 
-**2. Reparto y precio:** cada personaje recibe una voz clonada con permiso, y la app calcula cuánto costaría el texto con voz clonada, en estudio o con la opción híbrida.
+**2. Reparto:** cada personaje recibe una voz clonada con permiso; la opción híbrida aparece plegada.
 
-![Reparto y calculadora de precios](docs/capturas/2-reparto-y-precio.png)
+![Reparto de voces](docs/capturas/2-reparto.png)
 
 **3. Narración:** el audio de la escena lleva el aviso «Voz generada con IA»; todos sus segmentos están clonados. En una sección plegable, la app muestra también la opción híbrida.
 
@@ -82,6 +82,10 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 **5. Licencias de voz:** cada narrador ve para qué obra se usa su voz, dónde se publica, cada audio generado y cómo retirarla.
 
 ![Licencias de voz y registro de usos](docs/capturas/5-licencias-de-voz.png)
+
+**6. Cuánto costaría:** la app calcula el precio del texto con voz clonada, con la opción híbrida y en estudio.
+
+![Calculadora de precios](docs/capturas/6-cuanto-costaria.png)
 
 **Qué pasa en vivo y qué está pregenerado:** el plan de narración se arma en vivo con Gemini para cualquier texto. El audio de la escena está pregenerado, porque en CPU generar 38 segundos de audio toma de 13 a 50 minutos, según el modelo.
 

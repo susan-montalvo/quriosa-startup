@@ -339,5 +339,4 @@ else:
     st.info("Presiona **Armar plan con IA** para ver el plan de narración.")
 
 st.divider()
-st.caption("Quriosa · proyecto final de la Diplomatura de Ciencia de Datos de Q-Lab PUCP · "
-           "[código](https://github.com/susan-montalvo/quriosa-startup)")
+st.caption("[github.com/susan-montalvo/quriosa-startup](https://github.com/susan-montalvo/quriosa-startup)")
