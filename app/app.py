@@ -260,18 +260,6 @@ if "plan" in st.session_state:
             st.dataframe(pd.DataFrame(claves)[["n", "personaje", "importancia", "texto", "motivo_clave"]].rename(
                 columns={"motivo_clave": "por qué es importante"}), hide_index=True, width="stretch")
 
-    horas = total / PALABRAS_POR_MINUTO / 60
-    st.subheader("Cuánto costaría")
-    st.write(f"Este texto dura unos **{horas * 60:.1f} minutos** de audio ({total} palabras a "
-             f"{PALABRAS_POR_MINUTO} palabras por minuto).")
-    monto = lambda x: f"{x:.0f}" if x >= 10 else f"{x:.2f}"
-    dolares = lambda bajo, alto: f"US$ {monto(bajo)}" if bajo == alto else f"US$ {monto(bajo)} a {monto(alto)}"
-    st.dataframe(pd.DataFrame([{"plan": nombre, "por hora de audio": dolares(bajo, alto),
-                                "este texto": dolares(bajo * horas, alto * horas)}
-                               for nombre, bajo, alto in PRECIOS]), hide_index=True, width="stretch")
-    st.caption("Estudio: tarifa de un estudio de audio de Lima más la del locutor (conversación 3). "
-               "El primer título de hasta 30 minutos, como piloto, cuesta US$ 80.")
-
     # 4. Narración
     st.header("4. Narración")
     st.subheader("Escena completa con voz clonada")
@@ -334,6 +322,19 @@ if "plan" in st.session_state:
             st.markdown(f"**Registro de usos:** {len(usos)} segmentos · {usos['segundos'].sum():.1f} s de audio "
                         "· todos con el aviso «Voz generada con IA»")
             st.dataframe(usos, hide_index=True, width="stretch")
+
+    horas = total / PALABRAS_POR_MINUTO / 60
+    # 7. Cuánto costaría
+    st.header("7. Cuánto costaría")
+    st.write(f"Este texto dura unos **{horas * 60:.1f} minutos** de audio ({total} palabras a "
+             f"{PALABRAS_POR_MINUTO} palabras por minuto).")
+    monto = lambda x: f"{x:.0f}" if x >= 10 else f"{x:.2f}"
+    dolares = lambda bajo, alto: f"US$ {monto(bajo)}" if bajo == alto else f"US$ {monto(bajo)} a {monto(alto)}"
+    st.dataframe(pd.DataFrame([{"plan": nombre, "por hora de audio": dolares(bajo, alto),
+                                "este texto": dolares(bajo * horas, alto * horas)}
+                               for nombre, bajo, alto in PRECIOS]), hide_index=True, width="stretch")
+    st.caption("Estudio: tarifa de un estudio de audio de Lima más la del locutor (conversación 3). "
+               "El primer título de hasta 30 minutos, como piloto, cuesta US$ 80.")
 else:
     st.info("Presiona **Armar plan con IA** para ver el plan de narración.")
 
