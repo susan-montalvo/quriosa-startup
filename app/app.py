@@ -324,8 +324,8 @@ if "plan" in st.session_state:
             st.dataframe(usos, hide_index=True, width="stretch")
 
     horas = total / PALABRAS_POR_MINUTO / 60
-    # 7. Cuánto costaría
-    st.header("7. Cuánto costaría")
+    # 7. Costo
+    st.header("7. Costo")
     st.write(f"Este texto dura unos **{horas * 60:.1f} minutos** de audio ({total} palabras a "
              f"{PALABRAS_POR_MINUTO} palabras por minuto).")
     monto = lambda x: f"{x:.0f}" if x >= 10 else f"{x:.2f}"
