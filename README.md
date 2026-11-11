@@ -2,7 +2,7 @@
 
 > Quriosa convierte los libros infantiles y juveniles de las editoriales escolares peruanas en audiolibros narrados con voces peruanas replicadas con permiso.
 
-**Demo:** https://quriosa.streamlit.app/
+**Demo:** https://quriosa.streamlit.app/ · **Video del demo (1 min 38 s):** [Google Drive](https://drive.google.com/file/d/1pZ1fyQdLebeRr0EwSuCY6x02zg7qBlo8/view?usp=sharing)
 
 ## Founder
 
@@ -62,6 +62,8 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 ## Demo
 
 **URL:** https://quriosa.streamlit.app/. Escena de ejemplo: capítulo V de *El caballero Carmelo*, de Abraham Valdelomar (dominio público), con dos voces clonadas con permiso: la narradora (narrador 1) y el juez (narrador 2).
+
+**Video del demo (plan B):** si la app no carga, el recorrido completo está en [este video de 1 min 38 s](https://drive.google.com/file/d/1pZ1fyQdLebeRr0EwSuCY6x02zg7qBlo8/view?usp=sharing).
 
 **1. Plan de narración:** Gemini divide el texto en segmentos por personaje, con estilo y pausas.
 
