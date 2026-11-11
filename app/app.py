@@ -33,7 +33,6 @@ PALABRAS_POR_MINUTO = 131  # medido en el audio del demo (83 palabras en 37.9 s)
 PRECIOS = [  # dólares por hora de audio terminado (README, «Modelo de negocio»)
     ("Voz clonada", 220, 220),
     ("Híbrido: voz humana en las escenas clave", 320, 320),
-    ("Estudio, voz 100 % humana", 370, 520),
 ]
 VOCES = {
     "narrador-1": "Narrador 1 · voz femenina peruana (clonada con permiso)",
@@ -333,8 +332,7 @@ if "plan" in st.session_state:
     st.dataframe(pd.DataFrame([{"plan": nombre, "por hora de audio": dolares(bajo, alto),
                                 "este texto": dolares(bajo * horas, alto * horas)}
                                for nombre, bajo, alto in PRECIOS]), hide_index=True, width="stretch")
-    st.caption("Estudio: tarifa de un estudio de audio de Lima más la del locutor (conversación 3). "
-               "El primer título de hasta 30 minutos, como piloto, cuesta US$ 80.")
+    st.caption("El primer título de hasta 30 minutos, como piloto, cuesta US$ 80.")
 else:
     st.info("Presiona **Armar plan con IA** para ver el plan de narración.")
 

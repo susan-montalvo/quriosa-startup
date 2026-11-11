@@ -83,7 +83,7 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 ![Licencias de voz y registro de usos](docs/capturas/5-licencias-de-voz.png)
 
-**6. Costo:** la app calcula el precio del texto con voz clonada, con la opción híbrida y en estudio.
+**6. Costo:** la app calcula el precio del texto con voz clonada y con la opción híbrida.
 
 ![Calculadora de precios](docs/capturas/6-cuanto-costaria.png)
 
