@@ -87,7 +87,7 @@ Cubro producto, ingeniería, diseño y ventas con agentes de IA: Claude Code com
 
 **6. Costo:** la app calcula el precio del texto con voz clonada y con la opción híbrida.
 
-![Calculadora de precios](docs/capturas/6-cuanto-costaria.png)
+![Calculadora de precios](docs/capturas/6-costo.png)
 
 **Qué pasa en vivo y qué está pregenerado:** el plan de narración se arma en vivo con Gemini para cualquier texto. El audio de la escena está pregenerado, porque en CPU generar 38 segundos de audio toma de 13 a 50 minutos, según el modelo.
 
