@@ -1,4 +1,4 @@
-# Conversación 2 · Gestor educativo
+# Conversación 2 · Especialista en gestión curricular
 
 - **Fecha:** preguntas enviadas el 7 de noviembre de 2026; respuestas recibidas el 8 de noviembre de 2026.
 - **Quién:** Especialista en gestión curricular. Más de 15 años de experiencia en sector educativo. Sin nombre.
@@ -9,7 +9,6 @@
 
 1. Ha usado o considerado el uso de audiolibros como un recurso educativo en sus planes de trabajo? Si la respuesta es sí, explique cómo planteó usarlos.
 
-
 2. Qué posibilidades de usos educativos considera que tienen los audiolibros?
 
 3. Del mismo modo, Qué limitaciones de uso le ve?
@@ -18,7 +17,7 @@
 
 ## Respuestas
 
-Copiadas tal como las envió por escrito, sin corregir. La captura original del chat está archivada de forma privada y no se publica.
+Copiadas tal como las envió por escrito, sin corregir. Las capturas originales del chat, con las preguntas y las respuestas, están archivadas de forma privada y no se publican.
 
 1. Desde mi trabajo, no. Quizá porque no conozco mucho sobre audiolibros. No los consumo. Y tampoco los he explorado. Sería Bacan usarlo pero no conozco su potencial. 
 
@@ -32,4 +31,4 @@ Copiadas tal como las envió por escrito, sin corregir. La captura original del 
 
 - **¿Siente el problema?** No. No usa audiolibros en su trabajo ni los consume, y no conoce su potencial educativo.
 - **Objeciones:** le preocupan la conectividad en el país, los derechos de autor y escuchar un relato con voz generada por IA en vez de una voz humana.
-- **Qué cambia para Quriosa:** el docente no parece ser quien pide audiolibros, lo que refuerza a la editorial como cliente. Además: permitir descargar el audio para escucharlo sin conexión, explicar que se usan obras de dominio público y presentar las voces como de narradores reales que autorizaron su clonación.
+- **Qué cambia para Quriosa:** la especialista no parece ser quien pide audiolibros, lo que refuerza a la editorial como cliente. Además: permitir descargar el audio para escucharlo sin conexión, explicar que se usan obras de dominio público y presentar las voces como de narradores reales que autorizaron su clonación.
