@@ -2,8 +2,9 @@
 
 - **Fecha:** 9 de noviembre de 2026
 - **Quién:** locutor peruano con 25 años de experiencia; graba audiolibros para una editorial grande. Sin nombre.
-- **Medio:** WhatsApp, 2 notas de voz y un mensaje de texto.
-- **Duración:** 2 min 45 s (2 min 21 s y 24 s).
+- **Medio:** WhatsApp, 4 notas de voz y un mensaje de texto.
+- **Duración:** 3 min 24 s (2 min 21 s, 22 s, 24 s y 16 s).
+- **Permiso:** autorizó compartir su postura con Quriosa («Sí, normal, coméntalo»), en una nota de voz del 9 de noviembre de 2026.
 
 ## Preguntas
 
@@ -15,7 +16,7 @@
 
 ## Respuestas
 
-Respondió con dos notas de voz; a la pregunta 5, con un mensaje de texto y la segunda nota de voz. Notas transcritas con Whisper large-v3-turbo; su nombre y el de la editorial se reemplazaron por [el locutor] y [la editorial]. Los audios originales y el mensaje de texto están archivados de forma privada y no se publican.
+Respondió a las preguntas 1 a 4 con una nota de voz, y a la 5, con un mensaje de texto y otra nota de voz. Otras dos notas no se transcriben aquí: una aclara que hablaba de voces generadas por IA, no de voces clonadas de narradores, y la otra da el permiso para compartir su postura. Notas transcritas con Whisper large-v3-turbo; su nombre y el de la editorial se reemplazaron por [el locutor] y [la editorial]. Los audios originales y las capturas del chat están archivados de forma privada y no se publican.
 
 1. Si van a pedir otras cotizaciones, no les pidan a los locutores que les cobren por hora. Ese es el error, porque normalmente los locutores lo que hacen es equivocarse o tomarse más tiempo el debido y te cobran más horas. Por eso es que desde la asociación de locutores lo que hemos hecho ha sido establecer un monto por hora referencial que está entre 100 y 250 dólares, dependiendo del locutor, obviamente. Porque hay locutores más jóvenes que no tienen experiencia y te cobran 100 dólares. Y otros de más experiencia te cobramos un poco más.
 
@@ -32,5 +33,5 @@ Respondió con dos notas de voz; a la pregunta 5, con un mensaje de texto y la s
 - **Cuánto cuesta hoy:** la asociación de locutores fija una tarifa referencial de 100 a 250 dólares por hora (unos S/ 370 a 930), según la experiencia del locutor. Es aparte del estudio y la edición.
 - **Cuánto tiempo toma:** un locutor no graba más de 2 horas al día para no gastar la voz. Un libro de 300 a 400 páginas toma de 5 a 8 días, con correcciones.
 - **Objeciones:** rechaza la voz con IA: ha visto textos grabados con IA que suenan falsos, hubo que regrabarlos y el cliente quedó descontento. Es la tercera conversación con reparos a la voz con IA.
-- **¿Licenciaría su voz?** No: «No lo haría». Desconfía: hay casos de voces licenciadas para una cosa que terminan en otras, y es difícil controlar el producto final y por cuánto tiempo. Los locutores de México, Argentina y el Perú se están organizando para evitarlo.
+- **¿Licenciaría su voz?** No: «No lo haría». Desconfía: hay casos de voces licenciadas para una cosa que terminan en otras, y es difícil controlar el producto final y por cuánto tiempo. Los locutores de México, Argentina y el Perú se están organizando para evitarlo. En otra nota de voz agregó que en México esto ya se convirtió en ley y que el gremio busca lo mismo en el Perú (dato del locutor, no verificado).
 - **Qué cambia para Quriosa:** el límite de la voz humana (2 horas al día, afonía) es justo lo que la voz clonada evita, pero el narrador ve la IA como competencia y riesgo, no como ingreso. El 20 % no basta: la licencia debe dar control verificable (una obra por contrato, plazo definido, registro de cada audio generado con su voz y derecho a retirarla) y conviene negociarla con la asociación de locutores, no solo con cada uno. El control de calidad (Whisper y revisión humana) debe evitar el audio que «suena falso».

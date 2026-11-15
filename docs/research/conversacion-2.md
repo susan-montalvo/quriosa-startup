@@ -1,6 +1,6 @@
 # Conversación 2 · Gestor educativo
 
-- **Fecha:** 8 de noviembre de 2026
+- **Fecha:** preguntas enviadas el 7 de noviembre de 2026; respuestas recibidas el 8 de noviembre de 2026.
 - **Quién:** Especialista en gestión curricular. Más de 15 años de experiencia en sector educativo. Sin nombre.
 - **Medio:** WhatsApp, por escrito.
 - **Duración:** no aplica.

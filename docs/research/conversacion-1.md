@@ -1,9 +1,9 @@
 # Conversación 1 · Editorial escolar
 
-- **Fecha:** 7 de noviembre de 2026
+- **Fecha:** preguntas enviadas el 7 de noviembre de 2026; respuestas recibidas el 8 de noviembre de 2026.
 - **Quién:** Editor de literatura infantil y juvenil, más de 10 años de experiencia en el sector editorial. Sin nombre.
-- **Medio:** WhatsApp, 3 notas de voz, una por pregunta.
-- **Duración:** 1 min 41 s (19 s, 44 s y 38 s).
+- **Medio:** WhatsApp, 4 notas de voz: un saludo y una por pregunta.
+- **Duración:** 1 min 51 s (10 s de saludo; 19 s, 44 s y 38 s de respuestas).
 
 ## Preguntas
 
