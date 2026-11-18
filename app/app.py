@@ -37,11 +37,13 @@ ESPERA_MAXIMA = 60  # segundos en total; después se muestra el plan pregenerado
 PALABRAS_POR_MINUTO = 131  # medido en el audio del demo (83 palabras en 37.9 s)
 IDIOMAS = {"es": "Español", "en": "English"}
 
-st.set_page_config(page_title="Quriosa · audiolibros peruanos", page_icon=str(ASSETS / "icono.png"), layout="wide")
-
 if "lang" not in st.session_state:
     pedido = st.query_params.get("lang", "es")
     st.session_state.lang = pedido if pedido in IDIOMAS else "es"
+
+st.set_page_config(
+    page_title="Quriosa · Peruvian audiobooks" if st.session_state.lang == "en" else "Quriosa · audiolibros peruanos",
+    page_icon=str(ASSETS / "icono.png"), layout="wide")
 
 
 def t(es, en):
