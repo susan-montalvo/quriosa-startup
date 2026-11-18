@@ -128,15 +128,19 @@ ESQUEMA = {
     },
     "required": ["personajes", "segmentos", "pronunciacion", "erratas"],
 }
-EN_INGLES = ("\n\nWrite the descriptive fields (descripcion, estilo_base, estilo, motivo_clave, nota, contexto) in "
-             "English. Keep texto, texto_tts and the words to pronounce exactly as in the original text.")
+EN_INGLES = ("\n\n## Idioma de la interfaz: inglés (esta regla reemplaza a las anteriores sobre el idioma)\n\n"
+             "La persona que usa la app lee en inglés. Escribe en inglés los campos descriptivos: `descripcion` y "
+             "`estilo_base` de cada personaje; `estilo` y `motivo_clave` de cada segmento; `nota` de pronunciación; "
+             "`contexto` de las erratas. `estilo_tts` sigue en inglés. No traduzcas `texto`, `texto_tts`, `nombre`, "
+             "`palabra`, `como_se_dice`, `dice` ni `probablemente`: van en el idioma original del fragmento.")
 
 
 def armar_plan(texto, obra, autor, ingles=False):
     """Pide el plan a Gemini; prueba los modelos en orden. Devuelve (plan, modelo, segundos)."""
-    pedido_texto = f"Obra: {obra}\nAutor: {autor}\n\nFragmento:\n{texto}" + (EN_INGLES if ingles else "")
+    pedido_texto = f"Obra: {obra}\nAutor: {autor}\n\nFragmento:\n{texto}"
+    instrucciones = PROMPT.read_text(encoding="utf-8") + (EN_INGLES if ingles else "")
     cuerpo = {
-        "systemInstruction": {"parts": [{"text": PROMPT.read_text(encoding="utf-8")}]},
+        "systemInstruction": {"parts": [{"text": instrucciones}]},
         "contents": [{"parts": [{"text": pedido_texto}]}],
         "generationConfig": {"responseMimeType": "application/json", "responseSchema": ESQUEMA, "temperature": 0.2},
     }
