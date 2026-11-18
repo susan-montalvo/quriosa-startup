@@ -1,0 +1,26 @@
+{
+  "narrador-1": {
+    "titulo": "Narrator 1 · Peruvian female voice",
+    "autorizacion": "From the voice owner",
+    "obra": "El caballero Carmelo, by Abraham Valdelomar",
+    "personaje": "Narrator",
+    "donde": "Course presentation, web demo and GitHub repository",
+    "uso_comercial": "No",
+    "pago": "Unpaid (demo)",
+    "retiro": "Can withdraw it at any time",
+    "referencia": "Her original recording is not published",
+    "motor": "Qwen3-TTS 0.6B Base"
+  },
+  "narrador-2": {
+    "titulo": "Narrator 2 · Peruvian male voice",
+    "autorizacion": "Written and signed on November 7, 2026",
+    "obra": "El caballero Carmelo, by Abraham Valdelomar",
+    "personaje": "Judge (no other text, character or project without new written permission)",
+    "donde": "Course presentation (Nov 11, 2026), web demo and GitHub repository",
+    "uso_comercial": "No, and no advertising",
+    "pago": "Free of charge (demo)",
+    "retiro": "Can withdraw it at any time; his voice and the generated audio are deleted within 7 days",
+    "referencia": "His original recording and the digital copy of his voice are not published",
+    "motor": "VoxCPM2"
+  }
+}

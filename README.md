@@ -4,6 +4,18 @@
 
 **Demo:** https://quriosa.streamlit.app/ · **Video del demo (1 min 38 s):** [Google Drive](https://drive.google.com/file/d/1pZ1fyQdLebeRr0EwSuCY6x02zg7qBlo8/view?usp=sharing)
 
+## In English
+
+**Quriosa turns children's and young-adult books from Peruvian school publishers into audiobooks narrated with real Peruvian voices, cloned with each narrator's written permission.**
+
+- **Problem:** Peru registered only 447 audiobooks with an ISBN from 2015 to 2025, half of them from a single school publisher. Recording in a studio is slow and expensive, and narrators don't trust voice cloning because licensed voices end up in works they never approved.
+- **Solution:** Gemini turns the text into a structured narration plan (who speaks, style, pauses, pronunciation). Each character gets a licensed cloned voice (Qwen3-TTS, VoxCPM2). Whisper checks every segment and flags errors for human review. Each voice license covers one work, logs every use, and the narrator can revoke it; narrators earn 30% of each title.
+- **Result:** a 27-minute story costs a publisher about US$ 99, compared with US$ 167–234 in a Lima recording studio.
+- **Demo:** https://quriosa.streamlit.app/ (the app and the demo video are in Spanish).
+- **Founder:** Susan Montalvo, Lima, Peru. Built with Claude Code as AI coding partner.
+
+The rest of this README is in Spanish.
+
 ## Founder
 
 <img src="docs/founder.jpg" alt="Susan Montalvo" width="140" align="left" hspace="16">
