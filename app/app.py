@@ -29,8 +29,10 @@ ASSETS = Path(__file__).resolve().parent / "assets"
 PLAN_DEMO = RAIZ / "data" / "plan-narracion-carmelo-cap5.json"
 PROMPT = RAIZ / "ai" / "plan_narracion.md"
 # En orden de preferencia; si uno está saturado (503) o tarda, se pasa al siguiente.
-MODELOS = ["gemini-3.5-flash", "gemini-3.6-flash", "gemini-3-flash-preview",
+# 18 nov 2026: gemini-3-flash-preview va primero porque es el que responde (10-16 s); 3.5-flash tardaba más de 30 s.
+MODELOS = ["gemini-3-flash-preview", "gemini-3.5-flash", "gemini-3.6-flash",
            "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
+ESPERA_POR_MODELO = 25  # segundos
 ESPERA_MAXIMA = 60  # segundos en total; después se muestra el plan pregenerado
 PALABRAS_POR_MINUTO = 131  # medido en el audio del demo (83 palabras en 37.9 s)
 IDIOMAS = {"es": "Español", "en": "English"}
@@ -156,7 +158,7 @@ def armar_plan(texto, obra, autor, ingles=False):
             data=json.dumps(cuerpo).encode(), headers={"x-goog-api-key": clave(), "Content-Type": "application/json"})
         inicio = time.time()
         try:
-            respuesta = json.load(urllib.request.urlopen(pedido, timeout=min(30, queda)))
+            respuesta = json.load(urllib.request.urlopen(pedido, timeout=min(ESPERA_POR_MODELO, queda)))
             partes = respuesta["candidates"][0]["content"]["parts"]
             plan = json.loads(next(p["text"] for p in reversed(partes) if "text" in p))
             return plan, modelo, time.time() - inicio
